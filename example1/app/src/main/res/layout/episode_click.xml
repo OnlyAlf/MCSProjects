@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0008ff"
+    >
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="88dp"
+        >
+
+        <ImageView
+            android:id="@+id/episode_image"
+            android:layout_width="86dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1"
+            />
+
+        <TextView
+            android:id = "@+id/episode_number"
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/episode_image"
+            android:textSize="20sp"
+            android:layout_toRightOf="@+id/episode_image" />
+
+
+        <TextView
+            android:id = "@+id/channel"
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/episode_number"
+            android:layout_toEndOf="@+id/episode_image"
+            android:text="The Alf Channel"
+            android:textSize="20dp"
+            android:layout_toRightOf="@+id/episode_image" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/option"
+        android:layout_width="match_parent"
+        android:layout_height="40dp">
+
+        <ImageView
+            android:id="@+id/clock"
+            android:layout_width="113dp"
+            android:layout_height="match_parent"
+            app:srcCompat="@android:drawable/ic_menu_recent_history" />
+
+        <ImageView
+            android:id="@+id/stop"
+            android:layout_width="147dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/play"
+            app:srcCompat="@android:drawable/ic_media_play" />
+
+        <ImageView
+            android:id="@+id/play"
+            android:layout_width="156dp"
+            android:layout_height="match_parent"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="0dp"
+            android:layout_toEndOf="@+id/clock"
+            app:srcCompat="@android:drawable/ic_media_pause" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rating"
+        android:layout_width="match_parent"
+        android:layout_height="80dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text="Rating = 9.5/10"
+            android:textSize="40sp"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/Description"
+        android:layout_width="match_parent"
+        android:layout_height="145dp">
+
+        <TextView
+            android:id="@+id/episode_description2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textSize="30sp"
+            />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <Button
+            android:id="@+id/main_button_episode"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:text="Main Menu" />/>
+
+    </RelativeLayout>
+
+</LinearLayout>

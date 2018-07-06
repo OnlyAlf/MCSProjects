@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <RelativeLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <ImageView
+            android:id="@+id/background_series"
+            android:layout_width="match_parent"
+            android:layout_height="356dp"
+            android:scaleType="fitXY" />
+
+        <ImageView
+            android:id="@+id/background_series_transparency"
+            android:layout_width="match_parent"
+            android:layout_height="358dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:background="#800116ff" />
+
+        <ImageView
+            android:id="@+id/imageView"
+            android:layout_width="86dp"
+            android:layout_height="105dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_weight="1"
+            android:textColor="#ffffff" />
+
+        <TextView
+            android:id="@+id/status"
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/imageView"
+            android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/date"
+                    android:layout_width="147dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/status"
+                    android:layout_toEndOf="@+id/imageView"
+                    android:layout_toRightOf="@+id/imageView"
+                    android:text="Sunday 9pm"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp" />
+
+                <TextView
+                    android:id="@+id/channel"
+                    android:layout_width="147dp"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/date"
+                    android:layout_toEndOf="@+id/imageView"
+                    android:layout_toRightOf="@+id/imageView"
+                    android:text="The Alf Channel"
+                    android:textColor="#ffffff"
+                    android:textSize="20sp" />
+
+
+        <ImageView
+            android:id="@+id/stop"
+            android:layout_width="112dp"
+            android:layout_height="42dp"
+            android:layout_alignParentEnd="true"
+            android:layout_below="@+id/imageView"
+            app:srcCompat="@android:drawable/ic_media_play" />
+
+        <ImageView
+            android:id="@+id/play"
+            android:layout_width="156dp"
+            android:layout_height="39dp"
+            android:layout_below="@+id/imageView"
+            android:layout_centerHorizontal="true"
+            app:srcCompat="@android:drawable/ic_media_pause" />
+
+        <TextView
+            android:id="@+id/descr"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/imageView"
+            android:textSize="30sp" />
+
+
+                    <Button
+                        android:id="@+id/main_button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+                        android:layout_alignParentEnd="true"
+                        android:text="Main Menu" />
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/showRecyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="214dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="353dp" />
+
+        <ImageView
+            android:id="@+id/series_background"
+            android:layout_width="match_parent"
+            android:layout_height="107dp" />
+
+        <ImageView
+            android:id="@+id/clock"
+            android:layout_width="113dp"
+            android:layout_height="42dp"
+            android:layout_alignParentStart="true"
+            android:layout_below="@+id/imageView"
+            app:srcCompat="@android:drawable/ic_menu_recent_history" />
+
+
+    </RelativeLayout>
+</ScrollView>
