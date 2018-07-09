@@ -3,51 +3,56 @@ package com.example.admin.newapp.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class Episode implements Parcelable {
 
+    @SerializedName("Title")
+    @Expose
+    private String Title;
+    @SerializedName("Plot")
+    @Expose
+    private String Plot;
+    @SerializedName("Poster")
+    @Expose
+    String Poster;
 
     public Episode() {
 
     }
 
-    public Episode(String title, String description, int imageId) {
+    public Episode(String Title, String Plot, String Poster) {
         //THIS es
-        this.mTitle = title;
-        this.mDescription = description;
-        this.mLogo = imageId;
+        this.Title = Title;
+        this.Plot = Plot;
+        this.Poster = Poster;
     }
-
-    private String mTitle;
-    private String mDescription;
-    private int mLogo;
 
     // getter & setter
 
-    public int getImage(){
-        return mLogo;
+    public String getImage(){
+        return Poster;
 
     }
 
     public String getmTitle(){
-        return mTitle;
+        return Title;
 
     }
 
     public String getmDescription(){
-        return mDescription;
+        return Plot;
 
     }
 
     protected Episode(Parcel in) {
-        mTitle = in.readString();
-        mDescription = in.readString();
-        mLogo = in.readInt();
+        Title = in.readString();
+        Plot = in.readString();
+        Poster = in.readString();
     }
-
-
-
 
     @Override
     public int describeContents() {
@@ -56,9 +61,9 @@ public class Episode implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(mTitle);
-        dest.writeString(mDescription);
-        dest.writeInt(mLogo);
+        dest.writeString(Title);
+        dest.writeString(Plot);
+        dest.writeString(Poster);
     }
 
     @SuppressWarnings("unused")

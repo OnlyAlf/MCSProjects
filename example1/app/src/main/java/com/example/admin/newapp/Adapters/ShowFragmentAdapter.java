@@ -63,7 +63,6 @@ public class ShowFragmentAdapter extends RecyclerView.Adapter<ShowFragmentAdapte
         Season episode = seasonList.get(position);
         viewHolder.seasonItemTitle.setText(episode.getmTitle());
         viewHolder.seasonItemDescription.setText(episode.getmDescription());
-        viewHolder.episodeItemLogo.setImageResource(episode.getImage());
         viewHolder.itemView.findViewById(R.id.cardViewListener);
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {

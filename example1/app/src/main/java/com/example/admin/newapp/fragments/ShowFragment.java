@@ -54,10 +54,10 @@ public class ShowFragment extends Fragment {
         ImageView iv = v.findViewById(R.id.imageView);
         ImageView iv2 = v.findViewById(R.id.background_series);
         TextView tv2 = v.findViewById(R.id.status);
-        iv.setImageResource(show.getImage());
+        //iv.setImageResource(show.getImage());
         tv2.setText(show.getmTitle());
-        iv2.setImageResource(show.getImage());
-        iv.setImageResource(show.getImage());
+        //iv2.setImageResource(show.getImage());
+        //iv.setImageResource(show.getImage());
         recyclerView = (RecyclerView) v.findViewById(R.id.showRecyclerView);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

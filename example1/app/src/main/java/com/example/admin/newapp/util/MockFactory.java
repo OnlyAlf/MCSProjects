@@ -14,7 +14,7 @@ import java.util.List;
 public class MockFactory implements Parcelable {
 
     public static Show getMockedShow() {
-        Show show = new Show("Friends","friends description", R.drawable.friends_logo);
+        Show show = new Show("Friends","friends description","");
         show.setmSeasonList(MockFactory.getMockedSeasonList());
         return show;
     }
@@ -32,7 +32,7 @@ public class MockFactory implements Parcelable {
     public static List<Show> getMockedShowList() {
 
         List<Show> showList = new ArrayList<>();
-        Show mockShow = new Show("Friends", "friends description", R.drawable.friends_logo);
+        Show mockShow = new Show("Friends", "friends description", "");
         mockShow.setmSeasonList(MockFactory.getMockedSeasonList());
         showList.add(mockShow);
         showList.add(mockShow);

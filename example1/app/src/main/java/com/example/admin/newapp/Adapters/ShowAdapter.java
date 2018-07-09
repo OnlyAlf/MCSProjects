@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.method.ScrollingMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,7 +53,9 @@ public class ShowAdapter extends RecyclerView.Adapter<ShowAdapter.ViewHolder>{
         public ViewHolder(View v) {
             super(v);
             showItemTitle = (TextView) itemView.findViewById(R.id.showItemTitle);
+            showItemTitle.setSelected(true);
             showItemDescription = (TextView) itemView.findViewById(R.id.showDescription);
+            showItemDescription.setMovementMethod(new ScrollingMovementMethod());
             showItemLogo = (ImageView) itemView.findViewById(R.id.showItemLogo);
 
         }
@@ -73,7 +76,6 @@ public class ShowAdapter extends RecyclerView.Adapter<ShowAdapter.ViewHolder>{
         Show show = showList.get(position);
         viewHolder.showItemTitle.setText(show.getmTitle());
         viewHolder.showItemDescription.setText(show.getmDescription());
-        viewHolder.showItemLogo.setImageResource(show.getImage());
         viewHolder.itemView.findViewById(R.id.cardViewListener);
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
@@ -84,7 +86,7 @@ public class ShowAdapter extends RecyclerView.Adapter<ShowAdapter.ViewHolder>{
                 if (twoPane) {
 
                     // This is when you are in landscape
-`                    Bundle bundle = new Bundle();
+                    Bundle bundle = new Bundle();
                     bundle.putParcelable("Show",showList.get(position));
                     ShowFragment fragment = new ShowFragment();
                     fragment.setArguments(bundle);

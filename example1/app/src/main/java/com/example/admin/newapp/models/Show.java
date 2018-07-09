@@ -3,14 +3,23 @@ package com.example.admin.newapp.models;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Show implements Parcelable {
 
-    private String mTitle;
-    private String mDescription;
-    private int mLogo;
+    @SerializedName("Title")
+    @Expose
+    private String Title;
+    @SerializedName("Plot")
+    @Expose
+    private String Plot;
+    @SerializedName("Poster")
+    @Expose
+    String Poster;
     private List<Season> seasonList = new ArrayList<>();
     // getter & setter
 
@@ -18,45 +27,32 @@ public class Show implements Parcelable {
 
     }
 
-    public Show(String title, String description, int imageId) {
+    public Show(String Title, String Plot, String Poster) {
         //THIS es
-        this.mTitle = title;
-        this.mDescription = description;
-        this.mLogo = imageId;
+        this.Title = Title;
+        this.Plot = Plot;
+        this.Poster = Poster;
     }
 
-
     protected Show(Parcel in) {
-        mTitle = in.readString();
-        mDescription = in.readString();
-        mLogo = in.readInt();
+        Title = in.readString();
+        Plot = in.readString();
+        Poster = in.readString();
         seasonList = in.createTypedArrayList(Season.CREATOR);
     }
 
-    public static final Creator<Show> CREATOR = new Creator<Show>() {
-        @Override
-        public Show createFromParcel(Parcel in) {
-            return new Show(in);
-        }
-
-        @Override
-        public Show[] newArray(int size) {
-            return new Show[size];
-        }
-    };
-
-    public int getImage() {
-        return mLogo;
+    public String getImage() {
+        return Poster;
 
     }
 
     public String getmTitle() {
-        return mTitle;
+        return Title;
 
     }
 
     public String getmDescription() {
-        return mDescription;
+        return Plot;
 
     }
 
@@ -70,7 +66,6 @@ public class Show implements Parcelable {
 
     }
 
-
     @Override
     public int describeContents() {
         return 0;
@@ -78,9 +73,21 @@ public class Show implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
-        parcel.writeString(mTitle);
-        parcel.writeString(mDescription);
-        parcel.writeInt(mLogo);
+        parcel.writeString(Title);
+        parcel.writeString(Plot);
+        parcel.writeString(Poster);
         parcel.writeTypedList(seasonList);
     }
+
+    public static final Creator<Show> CREATOR = new Creator<Show>() {
+        @Override
+        public Show createFromParcel(Parcel in) {
+            return new Show(in);
+        }
+
+        @Override
+        public Show[] newArray(int size) {
+            return new Show[size];
+        }
+    };
 }

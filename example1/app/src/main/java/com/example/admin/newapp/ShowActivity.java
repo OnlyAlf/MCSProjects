@@ -43,8 +43,8 @@ public class ShowActivity extends MyAppCompatActivity {
 
         ImageView iv = findViewById(R.id.imageView);
         ImageView iv2 = findViewById(R.id.background_series);
-        iv2.setBackground(getDrawable(show.getImage()));
-        iv.setBackground(getDrawable(show.getImage()));
+      //  iv2.setBackground(getDrawable(show.getImage()));
+      //  iv.setBackground(getDrawable(show.getImage()));
         TextView tv = findViewById(R.id.status);
         tv.setText(show.getmTitle());
         TextView tv2 = findViewById(R.id.descr);
