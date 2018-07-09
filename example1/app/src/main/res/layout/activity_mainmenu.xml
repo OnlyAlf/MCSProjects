@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     tools:context=".MainMenuActivity"
-    android:background="#1106f4"
+    android:background="#880037ff"
     >
 
     <!--<ImageButton

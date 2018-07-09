@@ -18,6 +18,7 @@ import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
 public class MainMenuActivity extends MyAppCompatActivity {
 
     private RecyclerView.Adapter adapter;
+    RecyclerView recyclerView;
     private List<Show> showList = MockFactory.getMockedShowList();
     private boolean twoPane;
 
@@ -33,31 +34,13 @@ public class MainMenuActivity extends MyAppCompatActivity {
         }
 
 
-        RecyclerView recyclerView = (RecyclerView) findViewById(R.id.showRecyclerView);
+        recyclerView = (RecyclerView) findViewById(R.id.showRecyclerView);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new ShowAdapter(showList,MainMenuActivity.this,twoPane);
         recyclerView.setAdapter(adapter);
-        //backActivity((Button)findViewById(R.id.main_button));
 
-        //showList = new ArrayList<>();
-        //activityChange();
     }
-
-    /*public void activityChange(){
-        ImageButton seriesButton = findViewById(R.id.friends);
-        seriesButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Bundle bundle = new Bundle();
-
-                bundle.putParcelable("Show", mockedShow);
-                Intent intent = new Intent(MainMenuActivity.this,ShowActivity.class);
-                intent.putExtra("BUNDLE",bundle);
-                startActivity(intent);
-            }
-        });*/
-    //}
 
 }
 

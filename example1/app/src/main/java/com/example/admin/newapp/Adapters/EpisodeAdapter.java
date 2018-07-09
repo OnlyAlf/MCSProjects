@@ -14,7 +14,9 @@ import android.widget.TextView;
 import com.example.admin.newapp.EpisodeActivity;
 import com.example.admin.newapp.MainMenuActivity;
 import com.example.admin.newapp.R;
+import com.example.admin.newapp.SeasonActivity;
 import com.example.admin.newapp.ShowActivity;
+import com.example.admin.newapp.fragments.EpisodeFragment;
 import com.example.admin.newapp.fragments.ShowFragment;
 import com.example.admin.newapp.models.Episode;
 import com.example.admin.newapp.models.Season;
@@ -66,6 +68,7 @@ public class EpisodeAdapter extends RecyclerView.Adapter<EpisodeAdapter.ViewHold
         viewHolder.episodeItemTitle.setText(episode.getmTitle());
         viewHolder.episodeItemDescription.setText(episode.getmDescription());
         viewHolder.episodeItemLogo.setImageResource(episode.getImage());
+        viewHolder.itemView.findViewById(R.id.cardViewListener);
 
         viewHolder.episodeItemLogo.setOnClickListener(new View.OnClickListener() {
 
@@ -77,9 +80,9 @@ public class EpisodeAdapter extends RecyclerView.Adapter<EpisodeAdapter.ViewHold
                     // This is when you are in landscape
                     Bundle bundle = new Bundle();
                     bundle.putParcelable("Episode",episodeList.get(position));
-                    ShowFragment fragment = new ShowFragment();
+                    EpisodeFragment fragment = new EpisodeFragment();
                     fragment.setArguments(bundle);
-                    ((MainMenuActivity) context).getSupportFragmentManager().beginTransaction()
+                    ((SeasonActivity) context).getSupportFragmentManager().beginTransaction()
                             .replace(R.id.show_container, fragment)
                             .commit();
 

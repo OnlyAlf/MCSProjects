@@ -74,8 +74,9 @@ public class ShowAdapter extends RecyclerView.Adapter<ShowAdapter.ViewHolder>{
         viewHolder.showItemTitle.setText(show.getmTitle());
         viewHolder.showItemDescription.setText(show.getmDescription());
         viewHolder.showItemLogo.setImageResource(show.getImage());
+        viewHolder.itemView.findViewById(R.id.cardViewListener);
 
-        viewHolder.showItemLogo.setOnClickListener(new View.OnClickListener() {
+        viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
@@ -83,7 +84,7 @@ public class ShowAdapter extends RecyclerView.Adapter<ShowAdapter.ViewHolder>{
                 if (twoPane) {
 
                     // This is when you are in landscape
-                    Bundle bundle = new Bundle();
+`                    Bundle bundle = new Bundle();
                     bundle.putParcelable("Show",showList.get(position));
                     ShowFragment fragment = new ShowFragment();
                     fragment.setArguments(bundle);
@@ -91,7 +92,7 @@ public class ShowAdapter extends RecyclerView.Adapter<ShowAdapter.ViewHolder>{
                             .replace(R.id.show_container, fragment)
                             .commit();
 
-                } else {
+                }else{
 
                     Bundle bundle = new Bundle();
                     bundle.putParcelable("Show", showList.get(position));

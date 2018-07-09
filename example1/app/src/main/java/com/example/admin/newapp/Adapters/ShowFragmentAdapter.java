@@ -11,12 +11,10 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.admin.newapp.EpisodeActivity;
 import com.example.admin.newapp.MainMenuActivity;
 import com.example.admin.newapp.R;
 import com.example.admin.newapp.SeasonActivity;
 import com.example.admin.newapp.ShowActivity;
-import com.example.admin.newapp.fragments.SeasonFragment;
 import com.example.admin.newapp.fragments.ShowFragment;
 import com.example.admin.newapp.models.Episode;
 import com.example.admin.newapp.models.Season;
@@ -25,17 +23,15 @@ import com.example.admin.newapp.util.MockFactory;
 
 import java.util.List;
 
-public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.ViewHolder>{
+public class ShowFragmentAdapter extends RecyclerView.Adapter<ShowFragmentAdapter.ViewHolder>{
 
     List<Season> seasonList;
     private final Context context;
-    private final boolean twoPane;
 
-    public SeasonAdapter(List<Season> seasonList, Context context, boolean twoPane) {
+    public ShowFragmentAdapter(List<Season> seasonList, Context context) {
         this.context =context;
         this.seasonList = seasonList;
-        this.twoPane = twoPane;
-    }
+        }
 
     public class ViewHolder extends RecyclerView.ViewHolder{
 
@@ -53,16 +49,16 @@ public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.ViewHolder
     }
     @NonNull
     @Override
-    public SeasonAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
+    public ShowFragmentAdapter.ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
 
         View v = LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.list_item_show, viewGroup, false);
 
-        return new SeasonAdapter.ViewHolder(v);
+        return new ShowFragmentAdapter.ViewHolder(v);
     }
 
     @Override
-    public void onBindViewHolder(@NonNull SeasonAdapter.ViewHolder viewHolder, final int position) {
+    public void onBindViewHolder(@NonNull ShowFragmentAdapter.ViewHolder viewHolder, final int position) {
 
         Season episode = seasonList.get(position);
         viewHolder.seasonItemTitle.setText(episode.getmTitle());
@@ -75,14 +71,12 @@ public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.ViewHolder
             @Override
             public void onClick(View view) {
 
-
-                Bundle bundle = new Bundle();
-                bundle.putParcelable("Season", seasonList.get(position));
-                Intent intent = new Intent(context, SeasonActivity.class);
-                intent.putExtra("BUNDLE", bundle);
-                context.startActivity(intent);
-
-            }
+                    Bundle bundle = new Bundle();
+                    bundle.putParcelable("Season", seasonList.get(position));
+                    Intent intent = new Intent(context, SeasonActivity.class);
+                    intent.putExtra("BUNDLE", bundle);
+                    context.startActivity(intent);
+                }
         });
 
     }

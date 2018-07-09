@@ -20,8 +20,10 @@ import com.example.admin.newapp.util.MockFactory;
 
 import java.util.List;
 
+import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
+
 public class SeasonActivity extends MyAppCompatActivity {
-    static Season season = MockFactory.getMockedSeason();
+    static Season season;
     private RecyclerView recyclerView;
     private RecyclerView.Adapter adapter;
     private boolean twoPane;
@@ -31,7 +33,7 @@ public class SeasonActivity extends MyAppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.season_click);
-        if(findViewById(R.id.show_container) != null){
+        if(this.getResources().getConfiguration().orientation == ORIENTATION_LANDSCAPE){
             twoPane = true;
         }else{
             twoPane = false;

@@ -49,7 +49,6 @@ public class SeasonFragment extends Fragment {
         ImageView iv2 = v.findViewById(R.id.background_episode);
         TextView tv1 = v.findViewById(R.id.header);
         iv.setImageResource(season.getImage());
-        tv1.setText(season.getmDescription());
         iv2.setImageResource(season.getImage());
         return v;
     }

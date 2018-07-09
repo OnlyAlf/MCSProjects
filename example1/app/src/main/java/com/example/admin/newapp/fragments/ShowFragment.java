@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 import com.example.admin.newapp.Adapters.SeasonAdapter;
 import com.example.admin.newapp.Adapters.ShowAdapter;
+import com.example.admin.newapp.Adapters.ShowFragmentAdapter;
 import com.example.admin.newapp.MainMenuActivity;
 import com.example.admin.newapp.R;
 import com.example.admin.newapp.SeasonActivity;
@@ -23,7 +24,8 @@ import com.example.admin.newapp.models.Show;
 public class ShowFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-
+    RecyclerView recyclerView;
+    RecyclerView.Adapter adapter;
     private Show show;
 
     public ShowFragment() {
@@ -36,16 +38,12 @@ public class ShowFragment extends Fragment {
         if(getArguments().containsKey("Show") == true) {
 
             if(getArguments().getParcelable("Show") == null){
-
                 System.out.println("Did not work");
 
             }
-
             show = getArguments().getParcelable("Show");
 
         }
-
-
     }
 
     @Override
@@ -55,13 +53,17 @@ public class ShowFragment extends Fragment {
         View v = inflater.inflate(R.layout.show_click, container, false);
         ImageView iv = v.findViewById(R.id.imageView);
         ImageView iv2 = v.findViewById(R.id.background_series);
-        TextView tv1 = v.findViewById(R.id.descr);
         TextView tv2 = v.findViewById(R.id.status);
         iv.setImageResource(show.getImage());
-        tv1.setText(show.getmDescription());
         tv2.setText(show.getmTitle());
         iv2.setImageResource(show.getImage());
         iv.setImageResource(show.getImage());
+        recyclerView = (RecyclerView) v.findViewById(R.id.showRecyclerView);
+        recyclerView.setHasFixedSize(false);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        adapter = new ShowFragmentAdapter(show.getmSeasonList(),getActivity());
+        recyclerView.setAdapter(adapter);
+
         return v;
     }
 

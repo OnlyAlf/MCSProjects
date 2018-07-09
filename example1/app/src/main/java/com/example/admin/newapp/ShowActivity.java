@@ -21,9 +21,10 @@ import com.example.admin.newapp.util.MockFactory;
 
 import java.util.List;
 
+import static android.content.res.Configuration.ORIENTATION_PORTRAIT;
+
 public class ShowActivity extends MyAppCompatActivity {
 
-    static Show mockedShow = MockFactory.getMockedShow();
     private RecyclerView.Adapter adapter;
     private boolean twoPane;
 
@@ -32,13 +33,11 @@ public class ShowActivity extends MyAppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.show_click);
-        if(findViewById(R.id.show_container) != null){
+        if(this.getResources().getConfiguration().orientation == ORIENTATION_PORTRAIT){
             twoPane = true;
         }else{
             twoPane = false;
         }
-
-
 
         Show show = getIntent().getBundleExtra("BUNDLE").getParcelable("Show");
 
@@ -58,23 +57,7 @@ public class ShowActivity extends MyAppCompatActivity {
         backActivity(findViewById(R.id.main_button));
 
 
-}
-
-
-
-//    public void activityChange() {
-//        ImageButton seriesButton = findViewById(R.id.season_view);
-//        seriesButton.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Bundle bundle = new Bundle();
-//                bundle.putParcelable("Season", mockedSeason);
-//                Intent intent = new Intent(ShowActivity.this, SeasonActivity.class);
-//                intent.putExtra("BUNDLE", bundle);
-//                startActivity(intent);
-//            }
-//        });
-
+    }
     }
 
 
