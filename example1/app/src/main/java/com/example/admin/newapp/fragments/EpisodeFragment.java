@@ -45,7 +45,7 @@ public class EpisodeFragment extends Fragment {
         View v = inflater.inflate(R.layout.episode_click, container, false);
         ImageView iv = v.findViewById(R.id.episode_image);
         TextView tv1 = v.findViewById(R.id.header);
-        iv.setImageResource(episode.getImage());
+       // iv.setImageResource(episode.getImage());
         tv1.setText(episode.getmTitle());
         return v;
     }

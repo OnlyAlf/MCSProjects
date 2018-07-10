@@ -67,7 +67,7 @@ public class EpisodeAdapter extends RecyclerView.Adapter<EpisodeAdapter.ViewHold
         Episode episode = episodeList.get(position);
         viewHolder.episodeItemTitle.setText(episode.getmTitle());
         viewHolder.episodeItemDescription.setText(episode.getmDescription());
-        viewHolder.itemView.findViewById(R.id.cardViewListener);
+        viewHolder.itemView.findViewById(R.id.cardViewItem);
 
         viewHolder.episodeItemLogo.setOnClickListener(new View.OnClickListener() {
 

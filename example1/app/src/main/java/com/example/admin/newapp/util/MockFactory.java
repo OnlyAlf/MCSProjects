@@ -26,7 +26,7 @@ public class MockFactory implements Parcelable {
     }
 
     public static Episode getMockedEpisode() {
-        return new Episode("Season 15","The One with the Stoned Guy", R.drawable.season1_episode15);
+        return new Episode("Season 15","The One with the Stoned Guy", "");
     }
 
     public static List<Show> getMockedShowList() {
@@ -61,7 +61,7 @@ public class MockFactory implements Parcelable {
     public static List<Episode> getMockedEpisodeList() {
 
         List<Episode> episodeList = new ArrayList<>();
-        Episode mockedEpisode = new Episode("Season 15","The One with the Stoned Guy", R.drawable.season1_episode15);
+        Episode mockedEpisode = new Episode("Season 15","The One with the Stoned Guy","");
         episodeList.add(mockedEpisode);
         episodeList.add(mockedEpisode);
         episodeList.add(mockedEpisode);

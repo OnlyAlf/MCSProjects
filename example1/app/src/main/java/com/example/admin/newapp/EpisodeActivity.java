@@ -19,7 +19,7 @@ public class EpisodeActivity extends MyAppCompatActivity {
         super.setContentView(R.layout.episode_click);
         episode = getIntent().getBundleExtra("BUNDLE").getParcelable("Episode");
         ImageView iv = findViewById(R.id.episode_image);
-        iv.setBackground(getDrawable(episode.getImage()));
+       // iv.setBackground(getDrawable(episode.getImage()));
         TextView tv = findViewById(R.id.episode_number);
         tv.setText(episode.getmTitle());
         TextView tv2 = findViewById(R.id.episode_description2);

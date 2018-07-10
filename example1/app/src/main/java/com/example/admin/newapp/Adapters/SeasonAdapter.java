@@ -67,7 +67,7 @@ public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.ViewHolder
         Season episode = seasonList.get(position);
         viewHolder.seasonItemTitle.setText(episode.getmTitle());
         viewHolder.seasonItemDescription.setText(episode.getmDescription());
-        viewHolder.itemView.findViewById(R.id.cardViewListener);
+        viewHolder.itemView.findViewById(R.id.cardViewItem);
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 

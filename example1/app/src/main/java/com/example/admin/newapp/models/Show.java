@@ -20,6 +20,14 @@ public class Show implements Parcelable {
     @SerializedName("Poster")
     @Expose
     String Poster;
+    @SerializedName("imdbVotes")
+    @Expose
+    private String imdbRating;
+    @SerializedName("imdbID")
+    @Expose
+    private String imdbID;
+    private String directoryPath;
+
     private List<Season> seasonList = new ArrayList<>();
     // getter & setter
 
@@ -46,8 +54,18 @@ public class Show implements Parcelable {
 
     }
 
+    public String imdbRating() {
+        return imdbRating;
+
+    }
+
     public String getmTitle() {
         return Title;
+
+    }
+
+    public String getmDirectoryPath() {
+        return directoryPath;
 
     }
 
@@ -59,6 +77,35 @@ public class Show implements Parcelable {
     public List<Season> getmSeasonList() {
         return seasonList;
 
+    }
+
+    public String getImdbID() {
+        return imdbID;
+    }
+
+    public void setImdbID(String imdbID) {
+        this.imdbID = imdbID;
+    }
+
+    public void setTitle(String title) {
+        Title = title;
+    }
+
+    public void setPlot(String plot) {
+        Plot = plot;
+    }
+
+    public void setmDirectoryPath(String directoryPath) {
+        this.directoryPath = directoryPath;
+
+    }
+
+    public void setPoster(String poster) {
+        Poster = poster;
+    }
+
+    public void setImdbRating(String imdbRating) {
+        this.imdbRating = imdbRating;
     }
 
     public void setmSeasonList(List<Season> seasonList) {
@@ -76,6 +123,7 @@ public class Show implements Parcelable {
         parcel.writeString(Title);
         parcel.writeString(Plot);
         parcel.writeString(Poster);
+        parcel.writeString(imdbRating);
         parcel.writeTypedList(seasonList);
     }
 

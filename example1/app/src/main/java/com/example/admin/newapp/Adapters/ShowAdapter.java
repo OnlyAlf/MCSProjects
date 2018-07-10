@@ -30,6 +30,8 @@ import org.w3c.dom.Text;
 
 import java.util.List;
 
+import Util.BitmapManager;
+
 public class ShowAdapter extends RecyclerView.Adapter<ShowAdapter.ViewHolder>{
 
     List<Show> showList;
@@ -76,7 +78,8 @@ public class ShowAdapter extends RecyclerView.Adapter<ShowAdapter.ViewHolder>{
         Show show = showList.get(position);
         viewHolder.showItemTitle.setText(show.getmTitle());
         viewHolder.showItemDescription.setText(show.getmDescription());
-        viewHolder.itemView.findViewById(R.id.cardViewListener);
+        BitmapManager.loadImageFromStorage(show.getmDirectoryPath(),show.getImdbID(),viewHolder.showItemLogo);
+        viewHolder.itemView.findViewById(R.id.cardViewItem);
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 

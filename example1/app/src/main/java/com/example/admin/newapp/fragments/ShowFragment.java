@@ -21,6 +21,8 @@ import com.example.admin.newapp.SeasonActivity;
 import com.example.admin.newapp.ShowActivity;
 import com.example.admin.newapp.models.Show;
 
+import Util.BitmapManager;
+
 public class ShowFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -52,12 +54,13 @@ public class ShowFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.show_click, container, false);
         ImageView iv = v.findViewById(R.id.imageView);
+        BitmapManager.loadImageFromStorage(show.getmDirectoryPath(),show.getImdbID(),iv);
         ImageView iv2 = v.findViewById(R.id.background_series);
+        BitmapManager.loadImageFromStorage(show.getmDirectoryPath(),show.getImdbID(),iv2);
         TextView tv2 = v.findViewById(R.id.status);
         //iv.setImageResource(show.getImage());
         tv2.setText(show.getmTitle());
-        //iv2.setImageResource(show.getImage());
-        //iv.setImageResource(show.getImage());
+
         recyclerView = (RecyclerView) v.findViewById(R.id.showRecyclerView);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
