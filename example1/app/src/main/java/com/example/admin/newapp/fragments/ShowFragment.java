@@ -63,8 +63,8 @@ public class ShowFragment extends Fragment {
             BitmapManager.loadImageFromStorage(show.getmDirectoryPath(), show.getImdbID(), iv);
             BitmapManager.loadImageFromStorage(show.getmDirectoryPath(), show.getImdbID(), iv2);
         }
+
         TextView tv2 = v.findViewById(R.id.status);
-        //iv.setImageResource(show.getImage());
         tv2.setText(show.getmTitle());
 
         recyclerView = (RecyclerView) v.findViewById(R.id.showRecyclerView);

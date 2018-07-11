@@ -59,10 +59,12 @@ public class ShowFragmentAdapter extends RecyclerView.Adapter<ShowFragmentAdapte
         Season episode = seasonList.get(position);
         viewHolder.seasonItemTitle.setText(episode.getTitle());
         viewHolder.seasonItemDescription.setText(episode.getSeason());
-        if(show.getmDirectoryPath() == null || show.getmDirectoryPath().isEmpty()){
-            viewHolder.showItemLogo.setImageResource(R.drawable.place_holder);
+        if(seasonList.get(position).getmDirectoryPath() == null || seasonList.get(position).getmDirectoryPath().isEmpty()){
+            viewHolder.episodeItemLogo.setImageResource(R.drawable.place_holder);
         }else {
-            BitmapManager.loadImageFromStorage(show.getmDirectoryPath(), show.getImdbID(), viewHolder.showItemLogo);
+            BitmapManager.loadImageFromStorage(seasonList.get(position).getmDirectoryPath(),
+                                                seasonList.get(position).getmshowImdbId(),
+                                                viewHolder.episodeItemLogo);
         }
 
         viewHolder.itemView.findViewById(R.id.cardViewItem);

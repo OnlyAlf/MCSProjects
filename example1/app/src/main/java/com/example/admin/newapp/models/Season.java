@@ -21,8 +21,10 @@ public class Season implements Parcelable {
     @SerializedName("Episodes")
     @Expose
     private List<Episode> episodes = null;
+    private String showImdbId;
     private int totalEpisodes;
     private String directoryPath;
+
     private List<Episode> episodeList = new ArrayList<>();
 
     public Season() {
@@ -40,21 +42,30 @@ public class Season implements Parcelable {
         return Title;
     }
 
+    public String getmshowImdbId() {
+        return showImdbId;
+    }
+
     public String getSeason() {
         return Season;
     }
 
     public int getTotalEpisodes() {
-        return totalEpisodes;
+        this.totalEpisodes = episodes.size();
+        return episodes.size();
     }
 
-    public String getDirectoryPath() {
+    public String getmDirectoryPath() {
         return directoryPath;
     }
 
     //Setters for the variables
     public void setTitle(String title) {
         Title = title;
+    }
+
+    public void setmShowImdbId(String imdbID) {
+        this.showImdbId = imdbID;
     }
 
     public void setSeason(String season) {
@@ -80,7 +91,6 @@ public class Season implements Parcelable {
     public List<Episode> getmEpisodeList(){
         return episodeList;
     }
-
     //Parcelable override methods
     @Override
     public int describeContents() {
@@ -92,19 +102,13 @@ public class Season implements Parcelable {
         parcel.writeString(Title);
         parcel.writeString(Season);
         parcel.writeTypedList(episodes);
+        parcel.writeString(showImdbId);
         parcel.writeInt(totalEpisodes);
         parcel.writeString(directoryPath);
         parcel.writeTypedList(episodeList);
     }
 
-    protected Season(Parcel in) {
-        Title = in.readString();
-        Season = in.readString();
-        episodes = in.createTypedArrayList(Episode.CREATOR);
-        totalEpisodes = in.readInt();
-        directoryPath = in.readString();
-        episodeList = in.createTypedArrayList(Episode.CREATOR);
-    }
+
 
     public static final Creator<Season> CREATOR = new Creator<Season>() {
         @Override
@@ -117,5 +121,16 @@ public class Season implements Parcelable {
             return new Season[size];
         }
     };
+
+    protected Season(Parcel in) {
+        Title = in.readString();
+        Season = in.readString();
+        episodes = in.createTypedArrayList(Episode.CREATOR);
+        showImdbId = in.readString();
+        totalEpisodes = in.readInt();
+        directoryPath = in.readString();
+        episodeList = in.createTypedArrayList(Episode.CREATOR);
+    }
+
 }
 

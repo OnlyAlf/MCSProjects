@@ -10,6 +10,8 @@ import android.widget.TextView;
 import com.example.admin.newapp.BaseClass.MyAppCompatActivity;
 import com.example.admin.newapp.models.Episode;
 
+import Util.BitmapManager;
+
 public class EpisodeActivity extends MyAppCompatActivity {
     static Episode episode;
 
@@ -19,11 +21,16 @@ public class EpisodeActivity extends MyAppCompatActivity {
         super.setContentView(R.layout.episode_click);
         episode = getIntent().getBundleExtra("BUNDLE").getParcelable("Episode");
         ImageView iv = findViewById(R.id.episode_image);
-       // iv.setBackground(getDrawable(episode.getImage()));
+        if(episode.getDirectoryPath() == null ||episode.getDirectoryPath().isEmpty()){
+            iv.setImageResource(R.drawable.place_holder);
+
+        }else{
+            BitmapManager.loadImageFromStorage(episode.getDirectoryPath(), episode.getImdbID(), iv);
+        }
         TextView tv = findViewById(R.id.episode_number);
-        tv.setText(episode.getmTitle());
+        tv.setText(episode.getTitle());
         TextView tv2 = findViewById(R.id.episode_description2);
-        tv2.setText(episode.getmDescription());
+        tv2.setText(episode.getPlot());
         Button mainButton = findViewById(R.id.main_button_episode);
         backActivity(mainButton);
     }

@@ -17,6 +17,8 @@ import com.example.admin.newapp.models.Season;
 
 import java.util.List;
 
+import Util.BitmapManager;
+
 public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.ViewHolder>{
 
     List<Season> seasonList;
@@ -56,10 +58,16 @@ public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.ViewHolder
     @Override
     public void onBindViewHolder(@NonNull SeasonAdapter.ViewHolder viewHolder, final int position) {
 
-        Season episode = seasonList.get(position);
-        viewHolder.seasonItemTitle.setText(episode.getTitle());
-        viewHolder.seasonItemDescription.setText(episode.getSeason());
+        Season season = seasonList.get(position);
+        viewHolder.seasonItemTitle.setText(season.getTitle());
+        viewHolder.seasonItemDescription.setText(season.getSeason());
         viewHolder.itemView.findViewById(R.id.cardViewItem);
+
+        if(seasonList.get(position).getmDirectoryPath() == null || seasonList.get(position).getmDirectoryPath().isEmpty()){
+            viewHolder.episodeItemLogo.setImageResource(R.drawable.place_holder);
+        }else {
+            BitmapManager.loadImageFromStorage(seasonList.get(position).getmDirectoryPath(), seasonList.get(position).getmshowImdbId(), viewHolder.episodeItemLogo);
+        }
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {
 

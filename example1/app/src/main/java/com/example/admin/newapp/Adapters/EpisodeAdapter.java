@@ -24,6 +24,8 @@ import com.example.admin.newapp.models.Show;
 
 import java.util.List;
 
+import Util.BitmapManager;
+
 public class EpisodeAdapter extends RecyclerView.Adapter<EpisodeAdapter.ViewHolder>{
 
     List<Episode> episodeList;
@@ -65,8 +67,13 @@ public class EpisodeAdapter extends RecyclerView.Adapter<EpisodeAdapter.ViewHold
     public void onBindViewHolder(@NonNull EpisodeAdapter.ViewHolder viewHolder, final int position) {
 
         Episode episode = episodeList.get(position);
-        viewHolder.episodeItemTitle.setText(episode.getmTitle());
-        viewHolder.episodeItemDescription.setText(episode.getmDescription());
+        viewHolder.episodeItemTitle.setText(episode.getTitle());
+        viewHolder.episodeItemDescription.setText(episode.getPlot());
+        if(episodeList.get(position).getDirectoryPath() == null || episodeList.get(position).getDirectoryPath().isEmpty()){
+            viewHolder.episodeItemLogo.setImageResource(R.drawable.place_holder);
+        }else {
+            BitmapManager.loadImageFromStorage(episodeList.get(position).getDirectoryPath(), episodeList.get(position).getImdbID(), viewHolder.episodeItemLogo);
+        }
         viewHolder.itemView.findViewById(R.id.cardViewItem);
 
         viewHolder.episodeItemLogo.setOnClickListener(new View.OnClickListener() {

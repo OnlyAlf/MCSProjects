@@ -10,6 +10,7 @@ import com.example.admin.newapp.BuildConfig;
 import com.example.admin.newapp.Interfaces.InterfaceResults;
 import com.example.admin.newapp.MainMenuActivity;
 import com.example.admin.newapp.R;
+import com.example.admin.newapp.models.Episode;
 import com.example.admin.newapp.models.Season;
 import com.example.admin.newapp.models.Show;
 import com.google.gson.Gson;
@@ -46,33 +47,59 @@ public class JsonExtractor extends AsyncTask<String, Void, Show> {
     @Override
     protected Show doInBackground(String... strings) {
         // Making a request to url and getting response
-        String url = "http://www.omdbapi.com/?apikey="+API_KEY+"&type=series&plot=short&t="+strings[0];
+        String url = "http://www.omdbapi.com/?apikey=" + API_KEY + "&type=series&plot=short&t=" + strings[0];
         url = url.replaceAll(" ", "%20");
         Show show;
         String result = NetworkOperations.getJsonFromApi(url);
+        if (result.contains("Error")) {
+            return null;
+        }
         Gson gson = new Gson();
-        show = gson.fromJson(result,Show.class);
+        show = gson.fromJson(result, Show.class);
+        if (show == null) {
+            return null;
+        }
         Bitmap bitMap = BitmapManager.getBitmapFromURL(show.getImage());
-        String directoryPath = BitmapManager.saveToInternalStorage(bitMap,context, show.getImdbID());
+        String directoryPath = BitmapManager.saveToInternalStorage(bitMap, context, show.getImdbID());
         show.setmDirectoryPath(directoryPath);
         int numSeason = Integer.valueOf(show.getmTotalSeasons());
 
         ArrayList<Season> seasonList = new ArrayList<>();
-        Season season;
+        Season season = null;
+        String seasonUrl;
 
-        for(int i = 0; i < numSeason; i++){
+        for (int i = 0; i < numSeason; i++) {
 
-                url = url+"&season="+(i+1);
-                result = NetworkOperations.getJsonFromApi(url);
-                season = gson.fromJson(result,Season.class);
-                bitMap = BitmapManager.getBitmapFromURL(show.getImage());
-                season.setmDirectoryPath(directoryPath);
-                seasonList.add(season);
+            seasonUrl = url + "&season=" + (i + 1);
+            result = NetworkOperations.getJsonFromApi(seasonUrl);
+            season = gson.fromJson(result, Season.class);
+            int numEpisodes = season.getTotalEpisodes();
 
+            Episode episode = null;
+            String episodeUrl;
+            ArrayList<Episode> episodeList = new ArrayList<>();
+
+            for (int j = 0; j < numEpisodes; j++) {
+
+                episodeUrl = seasonUrl + "&episode=" + (j + 1);
+                result = NetworkOperations.getJsonFromApi(episodeUrl);
+                if (!result.contains("Error")) {
+                    episode = gson.fromJson(result, Episode.class);
+                    bitMap = BitmapManager.getBitmapFromURL(episode.getPoster());
+                    directoryPath = BitmapManager.saveToInternalStorage(bitMap, context, episode.getImdbID());
+                    episode.setDirectoryPath(directoryPath);
+                    episodeList.add(episode);
+                }
 
             }
+            season.setmEpisodeList(episodeList);
+            season.setmDirectoryPath(episodeList.get(0).getDirectoryPath());
+            season.setmShowImdbId(episodeList.get(0).getImdbID());
+            seasonList.add(season);
 
-            show.setmSeasonList(seasonList);
+        }
+
+        show.setmSeasonList(seasonList);
 
         return show;
     }

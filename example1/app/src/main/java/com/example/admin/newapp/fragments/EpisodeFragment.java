@@ -46,7 +46,7 @@ public class EpisodeFragment extends Fragment {
         ImageView iv = v.findViewById(R.id.episode_image);
         TextView tv1 = v.findViewById(R.id.header);
        // iv.setImageResource(episode.getImage());
-        tv1.setText(episode.getmTitle());
+        tv1.setText(episode.getTitle());
         return v;
     }
 

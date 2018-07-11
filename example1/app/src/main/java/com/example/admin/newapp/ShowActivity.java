@@ -21,6 +21,8 @@ import com.example.admin.newapp.util.MockFactory;
 
 import java.util.List;
 
+import Util.BitmapManager;
+
 import static android.content.res.Configuration.ORIENTATION_PORTRAIT;
 
 public class ShowActivity extends MyAppCompatActivity {
@@ -43,8 +45,15 @@ public class ShowActivity extends MyAppCompatActivity {
 
         ImageView iv = findViewById(R.id.imageView);
         ImageView iv2 = findViewById(R.id.background_series);
-      //  iv2.setBackground(getDrawable(show.getImage()));
-      //  iv.setBackground(getDrawable(show.getImage()));
+        if(show.getmDirectoryPath() == null ||show.getmDirectoryPath().isEmpty()){
+            iv.setImageResource(R.drawable.place_holder);
+            iv2.setImageResource(R.drawable.place_holder);
+
+        }else{
+            BitmapManager.loadImageFromStorage(show.getmDirectoryPath(), show.getImdbID(), iv);
+            BitmapManager.loadImageFromStorage(show.getmDirectoryPath(), show.getImdbID(), iv2);
+        }
+
         TextView tv = findViewById(R.id.status);
         tv.setText(show.getmTitle());
         TextView tv2 = findViewById(R.id.descr);
