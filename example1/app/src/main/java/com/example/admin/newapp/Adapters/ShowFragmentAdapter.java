@@ -11,17 +11,13 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.admin.newapp.MainMenuActivity;
 import com.example.admin.newapp.R;
 import com.example.admin.newapp.SeasonActivity;
-import com.example.admin.newapp.ShowActivity;
-import com.example.admin.newapp.fragments.ShowFragment;
-import com.example.admin.newapp.models.Episode;
 import com.example.admin.newapp.models.Season;
-import com.example.admin.newapp.models.Show;
-import com.example.admin.newapp.util.MockFactory;
 
 import java.util.List;
+
+import Util.BitmapManager;
 
 public class ShowFragmentAdapter extends RecyclerView.Adapter<ShowFragmentAdapter.ViewHolder>{
 
@@ -61,8 +57,14 @@ public class ShowFragmentAdapter extends RecyclerView.Adapter<ShowFragmentAdapte
     public void onBindViewHolder(@NonNull ShowFragmentAdapter.ViewHolder viewHolder, final int position) {
 
         Season episode = seasonList.get(position);
-        viewHolder.seasonItemTitle.setText(episode.getmTitle());
-        viewHolder.seasonItemDescription.setText(episode.getmDescription());
+        viewHolder.seasonItemTitle.setText(episode.getTitle());
+        viewHolder.seasonItemDescription.setText(episode.getSeason());
+        if(show.getmDirectoryPath() == null || show.getmDirectoryPath().isEmpty()){
+            viewHolder.showItemLogo.setImageResource(R.drawable.place_holder);
+        }else {
+            BitmapManager.loadImageFromStorage(show.getmDirectoryPath(), show.getImdbID(), viewHolder.showItemLogo);
+        }
+
         viewHolder.itemView.findViewById(R.id.cardViewItem);
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {

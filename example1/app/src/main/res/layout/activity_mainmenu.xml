@@ -43,11 +43,17 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <SearchView
+        android:id="@+id/showSearch"
+        android:windowSoftInputMode="adjustNothing"
         android:layout_width="374dp"
         android:layout_height="72dp"
+        android:background="#60ffffff"
+        android:voiceSearchMode="showVoiceSearchButton|launchRecognizer"
+        android:hint="@string/search_view_hint"
         app:layout_constraintBottom_toTopOf="@+id/showRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
 </android.support.constraint.ConstraintLayout>

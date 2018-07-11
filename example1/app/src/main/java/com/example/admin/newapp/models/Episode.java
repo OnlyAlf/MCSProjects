@@ -19,6 +19,7 @@ public class Episode implements Parcelable {
     @SerializedName("Poster")
     @Expose
     String Poster;
+    private String directoryPath;
 
     public Episode() {
 
@@ -31,8 +32,14 @@ public class Episode implements Parcelable {
         this.Poster = Poster;
     }
 
-    // getter & setter
+    protected Episode(Parcel in) {
+        Title = in.readString();
+        Plot = in.readString();
+        Poster = in.readString();
+        directoryPath = in.readString();
+    }
 
+    //Getters for all variables
     public String getImage(){
         return Poster;
 
@@ -48,26 +55,54 @@ public class Episode implements Parcelable {
 
     }
 
-    protected Episode(Parcel in) {
-        Title = in.readString();
-        Plot = in.readString();
-        Poster = in.readString();
+    public String getTitle() {
+        return Title;
     }
 
+    public String getPlot() {
+        return Plot;
+    }
+
+    public String getPoster() {
+        return Poster;
+    }
+
+    public String getDirectoryPath() {
+        return directoryPath;
+    }
+
+    //Setters for all variables
+    public void setTitle(String title) {
+        Title = title;
+    }
+
+    public void setPlot(String plot) {
+        Plot = plot;
+    }
+
+    public void setPoster(String poster) {
+        Poster = poster;
+    }
+
+    public void setDirectoryPath(String directoryPath) {
+        this.directoryPath = directoryPath;
+    }
+
+    //Parcelable override methods
     @Override
     public int describeContents() {
         return 0;
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(Title);
-        dest.writeString(Plot);
-        dest.writeString(Poster);
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(Title);
+        parcel.writeString(Plot);
+        parcel.writeString(Poster);
+        parcel.writeString(directoryPath);
     }
 
-    @SuppressWarnings("unused")
-    public static final Parcelable.Creator<Episode> CREATOR = new Parcelable.Creator<Episode>() {
+    public static final Creator<Episode> CREATOR = new Creator<Episode>() {
         @Override
         public Episode createFromParcel(Parcel in) {
             return new Episode(in);
@@ -78,4 +113,6 @@ public class Episode implements Parcelable {
             return new Episode[size];
         }
     };
+
+
 }

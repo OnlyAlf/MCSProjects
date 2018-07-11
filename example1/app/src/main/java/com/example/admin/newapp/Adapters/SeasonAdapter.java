@@ -11,17 +11,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.admin.newapp.EpisodeActivity;
-import com.example.admin.newapp.MainMenuActivity;
 import com.example.admin.newapp.R;
 import com.example.admin.newapp.SeasonActivity;
-import com.example.admin.newapp.ShowActivity;
-import com.example.admin.newapp.fragments.SeasonFragment;
-import com.example.admin.newapp.fragments.ShowFragment;
-import com.example.admin.newapp.models.Episode;
 import com.example.admin.newapp.models.Season;
-import com.example.admin.newapp.models.Show;
-import com.example.admin.newapp.util.MockFactory;
 
 import java.util.List;
 
@@ -65,8 +57,8 @@ public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.ViewHolder
     public void onBindViewHolder(@NonNull SeasonAdapter.ViewHolder viewHolder, final int position) {
 
         Season episode = seasonList.get(position);
-        viewHolder.seasonItemTitle.setText(episode.getmTitle());
-        viewHolder.seasonItemDescription.setText(episode.getmDescription());
+        viewHolder.seasonItemTitle.setText(episode.getTitle());
+        viewHolder.seasonItemDescription.setText(episode.getSeason());
         viewHolder.itemView.findViewById(R.id.cardViewItem);
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {

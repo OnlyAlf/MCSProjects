@@ -10,13 +10,6 @@
     android:id="@+id/parent_layout_fragment"
     android:background="#880037ff">
 
-
-    <!--
-    This layout is a two-pane layout for the Series
-    master/detail flow.
-
-    -->
-
     <FrameLayout
         android:id = "@+id/show_container"
         android:layout_width="match_parent"
@@ -25,12 +18,25 @@
         android:layout_toRightOf="@id/showRecyclerView">
     </FrameLayout>
 
+    <SearchView
+        android:id="@+id/showSearch"
+        android:layout_width="141dp"
+        android:layout_height="34dp"
+        android:background="#60ffffff"
+        android:voiceSearchMode="showVoiceSearchButton|launchRecognizer"
+        android:hint="@string/search_view_hint"
+        android:windowSoftInputMode="stateHidden|adjustNothing"
+        app:layout_constraintBottom_toTopOf="@+id/showRecyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/showRecyclerView"
         android:layout_width="wrap_content"
-        android:layout_height="match_parent"
+        android:layout_height="324dp"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true">
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="35dp"/>
 
-    </android.support.v7.widget.RecyclerView>
 </RelativeLayout>

@@ -26,10 +26,12 @@ public class Show implements Parcelable {
     @SerializedName("imdbID")
     @Expose
     private String imdbID;
+    @SerializedName("totalSeasons")
+    @Expose
+    private String totalSeasons;
     private String directoryPath;
-
     private List<Season> seasonList = new ArrayList<>();
-    // getter & setter
+
 
     public Show() {
 
@@ -42,15 +44,14 @@ public class Show implements Parcelable {
         this.Poster = Poster;
     }
 
-    protected Show(Parcel in) {
-        Title = in.readString();
-        Plot = in.readString();
-        Poster = in.readString();
-        seasonList = in.createTypedArrayList(Season.CREATOR);
-    }
-
+    //Getters for all variables
     public String getImage() {
         return Poster;
+
+    }
+
+    public String getmTotalSeasons() {
+        return totalSeasons;
 
     }
 
@@ -79,6 +80,7 @@ public class Show implements Parcelable {
 
     }
 
+    //Setters for all variables
     public String getImdbID() {
         return imdbID;
     }
@@ -97,7 +99,6 @@ public class Show implements Parcelable {
 
     public void setmDirectoryPath(String directoryPath) {
         this.directoryPath = directoryPath;
-
     }
 
     public void setPoster(String poster) {
@@ -113,6 +114,12 @@ public class Show implements Parcelable {
 
     }
 
+    public String setmTotalSeasons(String totalSeasons) {
+        return totalSeasons;
+
+    }
+
+    //Parcelable override methods
     @Override
     public int describeContents() {
         return 0;
@@ -124,6 +131,9 @@ public class Show implements Parcelable {
         parcel.writeString(Plot);
         parcel.writeString(Poster);
         parcel.writeString(imdbRating);
+        parcel.writeString(imdbID);
+        parcel.writeString(totalSeasons);
+        parcel.writeString(directoryPath);
         parcel.writeTypedList(seasonList);
     }
 
@@ -138,4 +148,16 @@ public class Show implements Parcelable {
             return new Show[size];
         }
     };
+
+    protected Show(Parcel in) {
+        Title = in.readString();
+        Plot = in.readString();
+        Poster = in.readString();
+        imdbRating = in.readString();
+        imdbID = in.readString();
+        totalSeasons = in.readString();
+        directoryPath = in.readString();
+        seasonList = in.createTypedArrayList(Season.CREATOR);
+    }
+
 }

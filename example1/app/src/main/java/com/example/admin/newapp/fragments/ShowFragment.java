@@ -54,9 +54,15 @@ public class ShowFragment extends Fragment {
         // Inflate the layout for this fragment
         View v = inflater.inflate(R.layout.show_click, container, false);
         ImageView iv = v.findViewById(R.id.imageView);
-        BitmapManager.loadImageFromStorage(show.getmDirectoryPath(),show.getImdbID(),iv);
         ImageView iv2 = v.findViewById(R.id.background_series);
-        BitmapManager.loadImageFromStorage(show.getmDirectoryPath(),show.getImdbID(),iv2);
+        if(show.getmDirectoryPath() == null ||show.getmDirectoryPath().isEmpty()){
+            iv.setImageResource(R.drawable.place_holder);
+            iv2.setImageResource(R.drawable.place_holder);
+
+        }else{
+            BitmapManager.loadImageFromStorage(show.getmDirectoryPath(), show.getImdbID(), iv);
+            BitmapManager.loadImageFromStorage(show.getmDirectoryPath(), show.getImdbID(), iv2);
+        }
         TextView tv2 = v.findViewById(R.id.status);
         //iv.setImageResource(show.getImage());
         tv2.setText(show.getmTitle());

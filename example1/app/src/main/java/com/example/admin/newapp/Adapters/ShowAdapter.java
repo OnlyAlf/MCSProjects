@@ -78,7 +78,13 @@ public class ShowAdapter extends RecyclerView.Adapter<ShowAdapter.ViewHolder>{
         Show show = showList.get(position);
         viewHolder.showItemTitle.setText(show.getmTitle());
         viewHolder.showItemDescription.setText(show.getmDescription());
-        BitmapManager.loadImageFromStorage(show.getmDirectoryPath(),show.getImdbID(),viewHolder.showItemLogo);
+
+        if(show.getmDirectoryPath() == null || show.getmDirectoryPath().isEmpty()){
+            viewHolder.showItemLogo.setImageResource(R.drawable.place_holder);
+        }else {
+            BitmapManager.loadImageFromStorage(show.getmDirectoryPath(), show.getImdbID(), viewHolder.showItemLogo);
+        }
+
         viewHolder.itemView.findViewById(R.id.cardViewItem);
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {

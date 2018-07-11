@@ -66,7 +66,7 @@ public class BitmapManager {
     public static void loadImageFromStorage(String directoryPath,String fileName, ImageView image){
 
         try {
-            File f = new File(directoryPath, fileName);
+           File f = new File(directoryPath, fileName);
             Bitmap b = BitmapFactory.decodeStream(new FileInputStream(f));
             image.setImageBitmap(b);
         }

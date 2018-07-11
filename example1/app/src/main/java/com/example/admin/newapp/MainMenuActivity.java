@@ -1,9 +1,12 @@
 package com.example.admin.newapp;
 
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.view.inputmethod.EditorInfo;
 import android.widget.Button;
+import android.widget.SearchView;
 import android.widget.Toast;
 
 import com.example.admin.newapp.Adapters.ShowAdapter;
@@ -23,8 +26,9 @@ public class MainMenuActivity extends MyAppCompatActivity implements InterfaceRe
 
     private RecyclerView.Adapter adapter;
     RecyclerView recyclerView;
-    private List<Show> showList = new ArrayList<>();
+    private ArrayList<Show> showList = new ArrayList<>();
     private boolean twoPane;
+    SearchView sv;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,8 +41,49 @@ public class MainMenuActivity extends MyAppCompatActivity implements InterfaceRe
             twoPane = false;
         }
 
-        JsonExtractor jsonExtractor = new JsonExtractor(this,this);
-        jsonExtractor.execute("new");
+        if(savedInstanceState != null){
+
+            showList = savedInstanceState.getParcelableArrayList("Show");
+
+        }
+
+            sv = findViewById(R.id.showSearch);
+            sv.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+                @Override
+                public boolean onQueryTextSubmit(String s) {
+
+                        JsonExtractor jsonExtractor = new JsonExtractor(MainMenuActivity.this, MainMenuActivity.this);
+                        jsonExtractor.execute(s);
+                        sv.clearFocus();
+                        sv.setQuery("", false);
+                    return false;
+                }
+
+                @Override
+                public boolean onQueryTextChange(String s) {
+                    return false;
+                }
+            });
+
+            displayInformationFromAdapter();
+
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putParcelableArrayList("Show",showList);
+        super.onSaveInstanceState(outState);
+    }
+
+    public void displayInformationFromAdapter(){
+
+        if(showList != null && showList.size() > 0) {
+            recyclerView = (RecyclerView) findViewById(R.id.showRecyclerView);
+            recyclerView.setHasFixedSize(false);
+            recyclerView.setLayoutManager(new LinearLayoutManager(this));
+            adapter = new ShowAdapter(showList, MainMenuActivity.this, twoPane);
+            recyclerView.setAdapter(adapter);
+        }
 
     }
 
@@ -46,18 +91,19 @@ public class MainMenuActivity extends MyAppCompatActivity implements InterfaceRe
     public void displayInformation(Show show) {
 
         if (show != null) {
+            ArrayList<Show> auxShowList= new ArrayList<>();
+            auxShowList.add(show);
             showList.add(show);
-            recyclerView = (RecyclerView) findViewById(R.id.showRecyclerView);
-            recyclerView.setHasFixedSize(false);
-            recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            adapter = new ShowAdapter(showList, MainMenuActivity.this, twoPane);
-            recyclerView.setAdapter(adapter);
+            displayInformationFromAdapter();
 
         }else{
 
             Toast.makeText(this,"Show was null",Toast.LENGTH_SHORT).show();
 
         }
+
+
+
 
 
 

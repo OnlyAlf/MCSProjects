@@ -20,7 +20,7 @@ public class MockFactory implements Parcelable {
     }
 
     public static Season getMockedSeason() {
-        Season season = new Season("Season 1","First Season of Friends", R.drawable.season1);
+        Season season = new Season("Season 1","First Season of Friends");
         season.setmEpisodeList(MockFactory.getMockedEpisodeList());
         return season;
     }
@@ -47,7 +47,7 @@ public class MockFactory implements Parcelable {
     public static List<Season> getMockedSeasonList() {
 
         List<Season> seasonList = new ArrayList<>();
-        Season mockedSeason = new Season("Season 1","First Season of Friends", R.drawable.season1);
+        Season mockedSeason = new Season("Season 1","First Season of Friends");
         mockedSeason.setmEpisodeList(MockFactory.getMockedEpisodeList());
         seasonList.add(mockedSeason);
         seasonList.add(mockedSeason);
