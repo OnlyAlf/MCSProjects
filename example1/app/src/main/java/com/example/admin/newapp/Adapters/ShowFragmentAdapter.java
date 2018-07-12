@@ -8,6 +8,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -34,6 +35,7 @@ public class ShowFragmentAdapter extends RecyclerView.Adapter<ShowFragmentAdapte
         public TextView seasonItemTitle;
         public TextView seasonItemDescription;
         public ImageView episodeItemLogo;
+        public Button downloadButton;
 
         public ViewHolder(View v) {
             super(v);

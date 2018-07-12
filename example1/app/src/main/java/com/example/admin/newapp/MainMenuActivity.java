@@ -28,7 +28,9 @@ public class MainMenuActivity extends MyAppCompatActivity implements InterfaceRe
     RecyclerView recyclerView;
     private ArrayList<Show> showList = new ArrayList<>();
     private boolean twoPane;
+    private boolean downloadAll = false;
     SearchView sv;
+    String search;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,7 +54,8 @@ public class MainMenuActivity extends MyAppCompatActivity implements InterfaceRe
                 @Override
                 public boolean onQueryTextSubmit(String s) {
 
-                        JsonExtractor jsonExtractor = new JsonExtractor(MainMenuActivity.this, MainMenuActivity.this);
+                        JsonExtractor jsonExtractor = new JsonExtractor(MainMenuActivity.this, MainMenuActivity.this,downloadAll);
+                        search = s;
                         jsonExtractor.execute(s);
                         sv.clearFocus();
                         sv.setQuery("", false);
@@ -64,6 +67,8 @@ public class MainMenuActivity extends MyAppCompatActivity implements InterfaceRe
                     return false;
                 }
             });
+
+
 
             displayInformationFromAdapter();
 
@@ -81,30 +86,26 @@ public class MainMenuActivity extends MyAppCompatActivity implements InterfaceRe
             recyclerView = (RecyclerView) findViewById(R.id.showRecyclerView);
             recyclerView.setHasFixedSize(false);
             recyclerView.setLayoutManager(new LinearLayoutManager(this));
-            adapter = new ShowAdapter(showList, MainMenuActivity.this, twoPane);
+            adapter = new ShowAdapter(MainMenuActivity.this,showList, MainMenuActivity.this, twoPane,search);
             recyclerView.setAdapter(adapter);
         }
 
     }
 
     @Override
-    public void displayInformation(Show show) {
+    public void displayInformationShow(Show show) {
 
         if (show != null) {
-            ArrayList<Show> auxShowList= new ArrayList<>();
+            ArrayList<Show> auxShowList = new ArrayList<>();
             auxShowList.add(show);
-            showList.add(show);
+            showList = auxShowList;
             displayInformationFromAdapter();
 
-        }else{
+        } else {
 
-            Toast.makeText(this,"Show was null",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Show was null", Toast.LENGTH_SHORT).show();
 
         }
-
-
-
-
 
 
     }

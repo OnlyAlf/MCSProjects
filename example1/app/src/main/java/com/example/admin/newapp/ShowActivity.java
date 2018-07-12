@@ -29,6 +29,7 @@ public class ShowActivity extends MyAppCompatActivity {
 
     private RecyclerView.Adapter adapter;
     private boolean twoPane;
+    Show show;
 
 
     @Override
@@ -41,7 +42,12 @@ public class ShowActivity extends MyAppCompatActivity {
             twoPane = false;
         }
 
-        Show show = getIntent().getBundleExtra("BUNDLE").getParcelable("Show");
+        if(savedInstanceState != null){
+
+            show = savedInstanceState.getParcelable("Show");
+
+        }else
+            show = getIntent().getBundleExtra("BUNDLE").getParcelable("Show");
 
         ImageView iv = findViewById(R.id.imageView);
         ImageView iv2 = findViewById(R.id.background_series);
@@ -66,6 +72,12 @@ public class ShowActivity extends MyAppCompatActivity {
         backActivity(findViewById(R.id.main_button));
 
 
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        outState.putParcelable("Show",show);
+        super.onSaveInstanceState(outState);
     }
     }
 

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.net.Uri;
 import android.os.AsyncTask;
+import android.widget.Toast;
 
 import com.example.admin.newapp.Adapters.ShowAdapter;
 import com.example.admin.newapp.BuildConfig;
@@ -35,11 +36,13 @@ public class JsonExtractor extends AsyncTask<String, Void, Show> {
     public static final String API_KEY= "278e2d87";
     InterfaceResults interfaceResults;
     Context context;
+    private boolean downloadAll;
 
-    public JsonExtractor(InterfaceResults interfaceResults, Context context){
+    public JsonExtractor(InterfaceResults interfaceResults, Context context, boolean downloadAll){
 
         this.interfaceResults = interfaceResults;
         this.context = context;
+        this.downloadAll = downloadAll;
 
     }
 
@@ -59,9 +62,11 @@ public class JsonExtractor extends AsyncTask<String, Void, Show> {
         if (show == null) {
             return null;
         }
+
         Bitmap bitMap = BitmapManager.getBitmapFromURL(show.getImage());
         String directoryPath = BitmapManager.saveToInternalStorage(bitMap, context, show.getImdbID());
         show.setmDirectoryPath(directoryPath);
+        if(!downloadAll){return show;}
         int numSeason = Integer.valueOf(show.getmTotalSeasons());
 
         ArrayList<Season> seasonList = new ArrayList<>();
@@ -107,7 +112,9 @@ public class JsonExtractor extends AsyncTask<String, Void, Show> {
     @Override
     protected void onPostExecute(Show show) {
         super.onPostExecute(show);
-        interfaceResults.displayInformation(show);
+        interfaceResults.displayInformationShow(show);
+        Toast.makeText(context, "Show Downloaded", Toast.LENGTH_SHORT).show();
+
     }
 
 

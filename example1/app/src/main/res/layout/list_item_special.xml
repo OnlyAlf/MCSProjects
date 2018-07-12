@@ -3,12 +3,12 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="0dp"
+    android:layout_margin="2dp"
     android:layout_width="320dp"
     android:layout_height="wrap_content">
 
     <android.support.constraint.ConstraintLayout
-        android:id="@+id/cardViewItem"
+        android:id="@+id/cardViewSpecial"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="#880037ff"
@@ -17,18 +17,22 @@
 
 
         <ImageView
-            android:id="@+id/showItemLogo"
+            android:id="@+id/showItemLogoSpecial"
             android:layout_width="118dp"
-            android:layout_height="156dp"
+            android:layout_height="133dp"
+            android:layout_marginBottom="4dp"
+            android:layout_marginLeft="4dp"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="4dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintBottom_toTopOf="@+id/download_show_button"
             app:layout_constraintEnd_toStartOf="@+id/relativeLayout"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <android.support.constraint.ConstraintLayout
-            android:id="@+id/relativeLayout"
+            android:id="@+id/relativeLayoutSpecial"
             android:layout_width="180dp"
             android:layout_height="182dp"
             android:background="#c4c5d4"
@@ -37,18 +41,18 @@
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
-                android:id="@+id/showDescription"
+                android:id="@+id/showDescriptionSpecial"
                 android:layout_width="170dp"
                 android:layout_height="122dp"
                 android:textSize="16sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/showItemTitle"
+                app:layout_constraintTop_toBottomOf="@+id/showItemTitleSpecial"
                 app:layout_constraintVertical_bias="0.666" />
 
             <TextView
-                android:id="@+id/showItemTitle"
+                android:id="@+id/showItemTitleSpecial"
                 android:layout_width="170dp"
                 android:layout_height="28dp"
                 android:textSize="20sp"
@@ -59,6 +63,20 @@
                 app:layout_constraintVertical_bias="0.035" />
 
         </android.support.constraint.ConstraintLayout>
+
+        <Button
+            android:id="@+id/download_show_button"
+            android:layout_width="121dp"
+            android:layout_height="51dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginRight="8dp"
+            android:text="@string/download_button_string"
+            android:textSize="13dp"
+            android:background="#c4c5d4"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/relativeLayoutSpecial"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/showItemLogoSpecial" />
 
     </android.support.constraint.ConstraintLayout>
 </android.support.v7.widget.CardView>

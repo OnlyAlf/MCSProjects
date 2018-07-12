@@ -25,7 +25,7 @@
         android:background="#60ffffff"
         android:voiceSearchMode="showVoiceSearchButton|launchRecognizer"
         android:hint="@string/search_view_hint"
-        android:windowSoftInputMode="stateHidden|adjustNothing"
+        android:windowSoftInputMode="adjustNothing"
         app:layout_constraintBottom_toTopOf="@+id/showRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
