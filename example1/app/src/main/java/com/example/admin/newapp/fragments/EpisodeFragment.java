@@ -1,4 +1,4 @@
-package com.example.admin.newapp.fragments;
+package com.example.admin.newapp.Fragments;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
@@ -9,7 +9,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.admin.newapp.R;
-import com.example.admin.newapp.models.Episode;
+import com.example.admin.newapp.Models.Episode;
 
 public class EpisodeFragment extends Fragment {
     // TODO: Rename parameter arguments, choose names that match

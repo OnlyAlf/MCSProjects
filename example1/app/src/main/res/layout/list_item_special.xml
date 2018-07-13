@@ -25,11 +25,12 @@
             android:layout_marginStart="4dp"
             android:layout_marginTop="4dp"
             android:adjustViewBounds="true"
-            android:scaleType="centerCrop"
+            android:scaleType="fitCenter"
             app:layout_constraintBottom_toTopOf="@+id/download_show_button"
             app:layout_constraintEnd_toStartOf="@+id/relativeLayout"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="spread_inside" />
 
         <android.support.constraint.ConstraintLayout
             android:id="@+id/relativeLayoutSpecial"
@@ -44,7 +45,7 @@
                 android:id="@+id/showDescriptionSpecial"
                 android:layout_width="170dp"
                 android:layout_height="122dp"
-                android:textSize="16sp"
+                android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
@@ -66,15 +67,16 @@
 
         <Button
             android:id="@+id/download_show_button"
-            android:layout_width="121dp"
+            android:layout_width="118dp"
             android:layout_height="51dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:text="@string/download_button_string"
-            android:textSize="13dp"
             android:background="#c4c5d4"
+            android:text="@string/downloaded_button_string"
+            android:textSize="13dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/relativeLayoutSpecial"
+            app:layout_constraintHorizontal_bias="0.285"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/showItemLogoSpecial" />
 

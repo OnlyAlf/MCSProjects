@@ -1,12 +1,11 @@
-package com.example.admin.newapp.util;
+package com.example.admin.newapp.Util;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
-import com.example.admin.newapp.R;
-import com.example.admin.newapp.models.Season;
-import com.example.admin.newapp.models.Show;
-import com.example.admin.newapp.models.Episode;
+import com.example.admin.newapp.Models.Season;
+import com.example.admin.newapp.Models.Show;
+import com.example.admin.newapp.Models.Episode;
 
 import java.util.ArrayList;
 import java.util.List;

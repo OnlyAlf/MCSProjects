@@ -1,12 +1,10 @@
-package com.example.admin.newapp.models;
+package com.example.admin.newapp.Models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
-import java.util.List;
 
 public class Episode implements Parcelable {
 
@@ -52,9 +50,6 @@ public class Episode implements Parcelable {
     @SerializedName("Country")
     @Expose
     private String country;
-    @SerializedName("Awards")
-    @Expose
-    private String awards;
     @SerializedName("Poster")
     @Expose
     private String poster;
@@ -64,69 +59,36 @@ public class Episode implements Parcelable {
     @SerializedName("imdbRating")
     @Expose
     private String imdbRating;
-    @SerializedName("imdbVotes")
-    @Expose
-    private String imdbVotes;
     @SerializedName("imdbID")
     @Expose
     private String imdbID;
-    @SerializedName("seriesID")
-    @Expose
-    private String seriesID;
     @SerializedName("Type")
     @Expose
     private String type;
-    @SerializedName("Response")
-    @Expose
-    private String response;
+    private boolean favorite;
+    private int episodeID;
+    private int seasonID;
     private String directoryPath;
 
     public Episode() {
 
     }
 
-    protected Episode(Parcel in) {
-        title = in.readString();
-        year = in.readString();
-        rated = in.readString();
-        released = in.readString();
-        season = in.readString();
-        episode = in.readString();
-        runtime = in.readString();
-        genre = in.readString();
-        director = in.readString();
-        writer = in.readString();
-        actors = in.readString();
-        plot = in.readString();
-        language = in.readString();
-        country = in.readString();
-        awards = in.readString();
-        poster = in.readString();
-        metascore = in.readString();
-        imdbRating = in.readString();
-        imdbVotes = in.readString();
-        imdbID = in.readString();
-        seriesID = in.readString();
-        type = in.readString();
-        response = in.readString();
-        directoryPath = in.readString();
-    }
-
-    public static final Creator<Episode> CREATOR = new Creator<Episode>() {
-        @Override
-        public Episode createFromParcel(Parcel in) {
-            return new Episode(in);
-        }
-
-        @Override
-        public Episode[] newArray(int size) {
-            return new Episode[size];
-        }
-    };
-
-    //Setters for variables
+    //Getters for variables
     public String getTitle() {
         return title;
+    }
+
+    public boolean isFavorite() {
+        return favorite;
+    }
+
+    public int getEpisodeId() {
+        return episodeID;
+    }
+
+    public int getSeasonID() {
+        return seasonID;
     }
 
     public String getYear() {
@@ -181,10 +143,6 @@ public class Episode implements Parcelable {
         return country;
     }
 
-    public String getAwards() {
-        return awards;
-    }
-
     public String getPoster() {
         return poster;
     }
@@ -197,33 +155,29 @@ public class Episode implements Parcelable {
         return imdbRating;
     }
 
-    public String getImdbVotes() {
-        return imdbVotes;
-    }
-
     public String getImdbID() {
         return imdbID;
-    }
-
-    public String getSeriesID() {
-        return seriesID;
     }
 
     public String getType() {
         return type;
     }
 
-    public String getResponse() {
-        return response;
-    }
-
     public String getDirectoryPath() {
         return directoryPath;
     }
 
-    //Getters for variables
+    //Setters for variables
     public void setTitle(String title) {
         this.title = title;
+    }
+
+    public void setFavorite(boolean isFavorite) {
+        this.favorite = isFavorite;
+    }
+
+    public void setSeasonId(int episodeID) {
+        this.episodeID = episodeID;
     }
 
     public void setYear(String year) {
@@ -278,12 +232,12 @@ public class Episode implements Parcelable {
         this.country = country;
     }
 
-    public void setAwards(String awards) {
-        this.awards = awards;
-    }
-
     public void setPoster(String poster) {
         this.poster = poster;
+    }
+
+    public void setSeasonID(int seasonID) {
+        this.seasonID = seasonID;
     }
 
     public void setMetascore(String metascore) {
@@ -294,24 +248,12 @@ public class Episode implements Parcelable {
         this.imdbRating = imdbRating;
     }
 
-    public void setImdbVotes(String imdbVotes) {
-        this.imdbVotes = imdbVotes;
-    }
-
     public void setImdbID(String imdbID) {
         this.imdbID = imdbID;
     }
 
-    public void setSeriesID(String seriesID) {
-        this.seriesID = seriesID;
-    }
-
     public void setType(String type) {
         this.type = type;
-    }
-
-    public void setResponse(String response) {
-        this.response = response;
     }
 
     public void setDirectoryPath(String directoryPath) {
@@ -339,15 +281,53 @@ public class Episode implements Parcelable {
         parcel.writeString(plot);
         parcel.writeString(language);
         parcel.writeString(country);
-        parcel.writeString(awards);
         parcel.writeString(poster);
         parcel.writeString(metascore);
         parcel.writeString(imdbRating);
-        parcel.writeString(imdbVotes);
         parcel.writeString(imdbID);
-        parcel.writeString(seriesID);
         parcel.writeString(type);
-        parcel.writeString(response);
+        parcel.writeByte((byte) (favorite ? 1 : 0));
+        parcel.writeInt(episodeID);
+        parcel.writeInt(seasonID);
         parcel.writeString(directoryPath);
     }
+
+    protected Episode(Parcel in) {
+        title = in.readString();
+        year = in.readString();
+        rated = in.readString();
+        released = in.readString();
+        season = in.readString();
+        episode = in.readString();
+        runtime = in.readString();
+        genre = in.readString();
+        director = in.readString();
+        writer = in.readString();
+        actors = in.readString();
+        plot = in.readString();
+        language = in.readString();
+        country = in.readString();
+        poster = in.readString();
+        metascore = in.readString();
+        imdbRating = in.readString();
+        imdbID = in.readString();
+        type = in.readString();
+        favorite = in.readByte() != 0;
+        episodeID = in.readInt();
+        seasonID = in.readInt();
+        directoryPath = in.readString();
+    }
+
+    public static final Creator<Episode> CREATOR = new Creator<Episode>() {
+        @Override
+        public Episode createFromParcel(Parcel in) {
+            return new Episode(in);
+        }
+
+        @Override
+        public Episode[] newArray(int size) {
+            return new Episode[size];
+        }
+    };
+
 }

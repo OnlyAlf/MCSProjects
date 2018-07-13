@@ -1,4 +1,4 @@
-package com.example.admin.newapp.models;
+package com.example.admin.newapp.Models;
 
 import android.os.Parcel;
 import android.os.Parcelable;
@@ -29,9 +29,10 @@ public class Show implements Parcelable {
     @SerializedName("totalSeasons")
     @Expose
     private String totalSeasons;
+    private int showId;
     private String directoryPath;
     private List<Season> seasonList = new ArrayList<>();
-
+    private boolean favorite;
 
     public Show() {
 
@@ -44,10 +45,23 @@ public class Show implements Parcelable {
         this.Poster = Poster;
     }
 
+
     //Getters for all variables
     public String getImage() {
         return Poster;
 
+    }
+
+    public int getShowId() {
+        return showId;
+    }
+
+    public String getImdbRating() {
+        return imdbRating;
+    }
+
+    public boolean isFavorite() {
+        return favorite;
     }
 
     public String getmTotalSeasons() {
@@ -75,14 +89,29 @@ public class Show implements Parcelable {
 
     }
 
+    public String getmImdbId() {
+        return imdbID;
+
+    }
+
     public List<Season> getmSeasonList() {
         return seasonList;
 
     }
 
+
+
     //Setters for all variables
     public String getImdbID() {
         return imdbID;
+    }
+
+    public void setShowId(int showId) {
+        this.showId = showId;
+    }
+
+    public void setFavorite(boolean isFavorite) {
+        this.favorite = isFavorite;
     }
 
     public void setImdbID(String imdbID) {
@@ -133,8 +162,23 @@ public class Show implements Parcelable {
         parcel.writeString(imdbRating);
         parcel.writeString(imdbID);
         parcel.writeString(totalSeasons);
+        parcel.writeInt(showId);
         parcel.writeString(directoryPath);
         parcel.writeTypedList(seasonList);
+        parcel.writeByte((byte) (favorite ? 1 : 0));
+    }
+
+    protected Show(Parcel in) {
+        Title = in.readString();
+        Plot = in.readString();
+        Poster = in.readString();
+        imdbRating = in.readString();
+        imdbID = in.readString();
+        totalSeasons = in.readString();
+        showId = in.readInt();
+        directoryPath = in.readString();
+        seasonList = in.createTypedArrayList(Season.CREATOR);
+        favorite = in.readByte() != 0;
     }
 
     public static final Creator<Show> CREATOR = new Creator<Show>() {
@@ -148,16 +192,4 @@ public class Show implements Parcelable {
             return new Show[size];
         }
     };
-
-    protected Show(Parcel in) {
-        Title = in.readString();
-        Plot = in.readString();
-        Poster = in.readString();
-        imdbRating = in.readString();
-        imdbID = in.readString();
-        totalSeasons = in.readString();
-        directoryPath = in.readString();
-        seasonList = in.createTypedArrayList(Season.CREATOR);
-    }
-
 }

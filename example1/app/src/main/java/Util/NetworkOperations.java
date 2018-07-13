@@ -45,7 +45,7 @@ public class NetworkOperations {
 
         }catch(Exception e){
             e.printStackTrace();
-            result = null;
+            result = "Abort";
         }
 
         return result;

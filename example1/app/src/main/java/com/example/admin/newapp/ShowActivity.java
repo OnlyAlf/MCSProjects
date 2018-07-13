@@ -1,25 +1,15 @@
 package com.example.admin.newapp;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.Button;
 
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.admin.newapp.Adapters.SeasonAdapter;
-import com.example.admin.newapp.Adapters.ShowAdapter;
 import com.example.admin.newapp.BaseClass.MyAppCompatActivity;
-import com.example.admin.newapp.models.Episode;
-import com.example.admin.newapp.models.Season;
-import com.example.admin.newapp.models.Show;
-import com.example.admin.newapp.util.MockFactory;
-
-import java.util.List;
+import com.example.admin.newapp.Models.Show;
 
 import Util.BitmapManager;
 
@@ -42,12 +32,12 @@ public class ShowActivity extends MyAppCompatActivity {
             twoPane = false;
         }
 
-        if(savedInstanceState != null){
-
-            show = savedInstanceState.getParcelable("Show");
-
-        }else
-            show = getIntent().getBundleExtra("BUNDLE").getParcelable("Show");
+//        if(savedInstanceState != null){
+//
+//            show = savedInstanceState.getParcelable("Show");
+//
+//        }else
+        show = getIntent().getBundleExtra("BUNDLE").getParcelable("Show");
 
         ImageView iv = findViewById(R.id.imageView);
         ImageView iv2 = findViewById(R.id.background_series);
@@ -74,11 +64,11 @@ public class ShowActivity extends MyAppCompatActivity {
 
     }
 
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        outState.putParcelable("Show",show);
-        super.onSaveInstanceState(outState);
-    }
+//    @Override
+//    public void onSaveInstanceState(Bundle outState) {
+//        outState.putParcelable("Show",show);
+//        super.onSaveInstanceState(outState);
+//    }
     }
 
 

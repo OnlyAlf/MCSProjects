@@ -11,20 +11,19 @@
     android:background="#880037ff">
 
     <FrameLayout
-        android:id = "@+id/show_container"
-        android:layout_width="match_parent"
+        android:id="@+id/show_container"
+        android:layout_width="450dp"
         android:layout_height="match_parent"
-        android:layout_toEndOf="@id/showRecyclerView"
-        android:layout_toRightOf="@id/showRecyclerView">
-    </FrameLayout>
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"></FrameLayout>
 
     <SearchView
         android:id="@+id/showSearch"
-        android:layout_width="141dp"
+        android:layout_width="320dp"
         android:layout_height="34dp"
         android:background="#60ffffff"
-        android:voiceSearchMode="showVoiceSearchButton|launchRecognizer"
         android:hint="@string/search_view_hint"
+        android:voiceSearchMode="showVoiceSearchButton|launchRecognizer"
         android:windowSoftInputMode="adjustNothing"
         app:layout_constraintBottom_toTopOf="@+id/showRecyclerView"
         app:layout_constraintEnd_toEndOf="parent"

@@ -1,8 +1,7 @@
-package com.example.admin.newapp.util;
+package com.example.admin.newapp.Util;
 
 import android.content.Intent;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.example.admin.newapp.BaseClass.MyAppCompatActivity;
@@ -11,7 +10,7 @@ import com.example.admin.newapp.R;
 
 public class LoadActivity extends MyAppCompatActivity {
 
-    private static int SPLASH_TIME_OUT = 4000;
+    private static int SPLASH_TIME_OUT = 1500;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {

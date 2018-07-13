@@ -9,7 +9,7 @@ import android.widget.TextView;
 
 import com.example.admin.newapp.Adapters.EpisodeAdapter;
 import com.example.admin.newapp.BaseClass.MyAppCompatActivity;
-import com.example.admin.newapp.models.Season;
+import com.example.admin.newapp.Models.Season;
 
 import Util.BitmapManager;
 
@@ -41,8 +41,8 @@ public class SeasonActivity extends MyAppCompatActivity {
             iv2.setImageResource(R.drawable.place_holder);
 
         }else{
-            BitmapManager.loadImageFromStorage(season.getmDirectoryPath(), season.getmshowImdbId(), iv);
-            BitmapManager.loadImageFromStorage(season.getmDirectoryPath(), season.getmshowImdbId(), iv2);
+            BitmapManager.loadImageFromStorage(season.getmDirectoryPath(), season.getmEpisodeImdbId(), iv);
+            BitmapManager.loadImageFromStorage(season.getmDirectoryPath(), season.getmEpisodeImdbId(), iv2);
         }
 
         TextView tv = findViewById(R.id.season_number);

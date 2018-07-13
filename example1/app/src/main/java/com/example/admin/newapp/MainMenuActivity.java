@@ -1,26 +1,19 @@
 package com.example.admin.newapp;
 
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.inputmethod.EditorInfo;
-import android.widget.Button;
 import android.widget.SearchView;
 import android.widget.Toast;
-
 import com.example.admin.newapp.Adapters.ShowAdapter;
 import com.example.admin.newapp.BaseClass.MyAppCompatActivity;
 import com.example.admin.newapp.Interfaces.InterfaceResults;
 import com.example.admin.newapp.Threads.JsonExtractor;
-import com.example.admin.newapp.models.Season;
-import com.example.admin.newapp.models.Show;
-import com.example.admin.newapp.util.MockFactory;
+import com.example.admin.newapp.Models.Show;
+import com.example.admin.newapp.Util.DatabaseOperations;
+import com.facebook.stetho.Stetho;
 
 import java.util.ArrayList;
-import java.util.List;
-
-import static android.content.res.Configuration.ORIENTATION_LANDSCAPE;
 
 public class MainMenuActivity extends MyAppCompatActivity implements InterfaceResults {
 
@@ -36,17 +29,12 @@ public class MainMenuActivity extends MyAppCompatActivity implements InterfaceRe
     public void onCreate(Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        Stetho.initializeWithDefaults(this);
         super.setContentView(R.layout.activity_mainmenu);
         if(findViewById(R.id.show_container) != null){
             twoPane = true;
         }else{
             twoPane = false;
-        }
-
-        if(savedInstanceState != null){
-
-            showList = savedInstanceState.getParcelableArrayList("Show");
-
         }
 
             sv = findViewById(R.id.showSearch);
@@ -68,16 +56,9 @@ public class MainMenuActivity extends MyAppCompatActivity implements InterfaceRe
                 }
             });
 
-
-
+            showList = DatabaseOperations.getShows(MainMenuActivity.this);
             displayInformationFromAdapter();
 
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState) {
-        outState.putParcelableArrayList("Show",showList);
-        super.onSaveInstanceState(outState);
     }
 
     public void displayInformationFromAdapter(){
@@ -103,12 +84,13 @@ public class MainMenuActivity extends MyAppCompatActivity implements InterfaceRe
 
         } else {
 
-            Toast.makeText(this, "Show was null", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Show does not exist or no Internet Connection!", Toast.LENGTH_SHORT).show();
 
         }
 
 
     }
+
 
 
 }

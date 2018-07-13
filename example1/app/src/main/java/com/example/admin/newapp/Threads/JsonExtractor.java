@@ -2,27 +2,17 @@ package com.example.admin.newapp.Threads;
 
 import android.content.Context;
 import android.graphics.Bitmap;
-import android.net.Uri;
 import android.os.AsyncTask;
 import android.widget.Toast;
 
-import com.example.admin.newapp.Adapters.ShowAdapter;
-import com.example.admin.newapp.BuildConfig;
 import com.example.admin.newapp.Interfaces.InterfaceResults;
-import com.example.admin.newapp.MainMenuActivity;
+import com.example.admin.newapp.Models.Episode;
+import com.example.admin.newapp.Models.Season;
+import com.example.admin.newapp.Models.Show;
 import com.example.admin.newapp.R;
-import com.example.admin.newapp.models.Episode;
-import com.example.admin.newapp.models.Season;
-import com.example.admin.newapp.models.Show;
+import com.example.admin.newapp.Util.DatabaseOperations;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.net.HttpURLConnection;
-import java.net.InterfaceAddress;
-import java.net.URL;
 import java.util.ArrayList;
 
 import Util.BitmapManager;
@@ -34,9 +24,13 @@ public class JsonExtractor extends AsyncTask<String, Void, Show> {
     public static final int READ_TIMEOUT = 15000;
     public static final int CONNECTION_TIMEOUT = 15000;
     public static final String API_KEY= "278e2d87";
+    String nullError = "Error";
+    String networkError = "Network Error, check connection to internet!";
+    Bitmap bitMap;
     InterfaceResults interfaceResults;
     Context context;
     private boolean downloadAll;
+    String directoryPath;
 
     public JsonExtractor(InterfaceResults interfaceResults, Context context, boolean downloadAll){
 
@@ -54,6 +48,11 @@ public class JsonExtractor extends AsyncTask<String, Void, Show> {
         url = url.replaceAll(" ", "%20");
         Show show;
         String result = NetworkOperations.getJsonFromApi(url);
+
+        if(result.contains("Abort")){
+            //Toast.makeText(context, networkError, Toast.LENGTH_SHORT).show();
+            return null;
+        }
         if (result.contains("Error")) {
             return null;
         }
@@ -63,9 +62,10 @@ public class JsonExtractor extends AsyncTask<String, Void, Show> {
             return null;
         }
 
-        Bitmap bitMap = BitmapManager.getBitmapFromURL(show.getImage());
-        String directoryPath = BitmapManager.saveToInternalStorage(bitMap, context, show.getImdbID());
+        bitMap = BitmapManager.getBitmapFromURL(show.getImage());
+        directoryPath = BitmapManager.saveToInternalStorage(bitMap, context, show.getImdbID());
         show.setmDirectoryPath(directoryPath);
+
         if(!downloadAll){return show;}
         int numSeason = Integer.valueOf(show.getmTotalSeasons());
 
@@ -78,8 +78,8 @@ public class JsonExtractor extends AsyncTask<String, Void, Show> {
             seasonUrl = url + "&season=" + (i + 1);
             result = NetworkOperations.getJsonFromApi(seasonUrl);
             season = gson.fromJson(result, Season.class);
+            season.setTotalEpisodes();
             int numEpisodes = season.getTotalEpisodes();
-
             Episode episode = null;
             String episodeUrl;
             ArrayList<Episode> episodeList = new ArrayList<>();
@@ -98,8 +98,9 @@ public class JsonExtractor extends AsyncTask<String, Void, Show> {
 
             }
             season.setmEpisodeList(episodeList);
+            //season.setShowImdbId(show.getImdbID());
             season.setmDirectoryPath(episodeList.get(0).getDirectoryPath());
-            season.setmShowImdbId(episodeList.get(0).getImdbID());
+            season.setmEpisodeImdbId(episodeList.get(0).getImdbID());
             seasonList.add(season);
 
         }
@@ -113,7 +114,10 @@ public class JsonExtractor extends AsyncTask<String, Void, Show> {
     protected void onPostExecute(Show show) {
         super.onPostExecute(show);
         interfaceResults.displayInformationShow(show);
-        Toast.makeText(context, "Show Downloaded", Toast.LENGTH_SHORT).show();
+        if(downloadAll) {
+            DatabaseOperations.saveShow(show, context);
+            Toast.makeText(context, "Show Downloaded", Toast.LENGTH_SHORT).show();
+        }
 
     }
 

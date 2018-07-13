@@ -1,7 +1,5 @@
-package com.example.admin.newapp.fragments;
+package com.example.admin.newapp.Fragments;
 
-import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,14 +10,9 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.admin.newapp.Adapters.SeasonAdapter;
-import com.example.admin.newapp.Adapters.ShowAdapter;
 import com.example.admin.newapp.Adapters.ShowFragmentAdapter;
-import com.example.admin.newapp.MainMenuActivity;
 import com.example.admin.newapp.R;
-import com.example.admin.newapp.SeasonActivity;
-import com.example.admin.newapp.ShowActivity;
-import com.example.admin.newapp.models.Show;
+import com.example.admin.newapp.Models.Show;
 
 import Util.BitmapManager;
 

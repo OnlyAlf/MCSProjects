@@ -13,7 +13,7 @@ import android.widget.TextView;
 
 import com.example.admin.newapp.R;
 import com.example.admin.newapp.SeasonActivity;
-import com.example.admin.newapp.models.Season;
+import com.example.admin.newapp.Models.Season;
 
 import java.util.List;
 
@@ -66,7 +66,7 @@ public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.ViewHolder
         if(seasonList.get(position).getmDirectoryPath() == null || seasonList.get(position).getmDirectoryPath().isEmpty()){
             viewHolder.episodeItemLogo.setImageResource(R.drawable.place_holder);
         }else {
-            BitmapManager.loadImageFromStorage(seasonList.get(position).getmDirectoryPath(), seasonList.get(position).getmshowImdbId(), viewHolder.episodeItemLogo);
+            BitmapManager.loadImageFromStorage(seasonList.get(position).getmDirectoryPath(), seasonList.get(position).getmEpisodeImdbId(), viewHolder.episodeItemLogo);
         }
 
         viewHolder.itemView.setOnClickListener(new View.OnClickListener() {

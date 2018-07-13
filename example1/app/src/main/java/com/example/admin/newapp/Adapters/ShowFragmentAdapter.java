@@ -14,7 +14,7 @@ import android.widget.TextView;
 
 import com.example.admin.newapp.R;
 import com.example.admin.newapp.SeasonActivity;
-import com.example.admin.newapp.models.Season;
+import com.example.admin.newapp.Models.Season;
 
 import java.util.List;
 
@@ -35,13 +35,14 @@ public class ShowFragmentAdapter extends RecyclerView.Adapter<ShowFragmentAdapte
         public TextView seasonItemTitle;
         public TextView seasonItemDescription;
         public ImageView episodeItemLogo;
-        public Button downloadButton;
+        public Button mainMenu;
 
         public ViewHolder(View v) {
             super(v);
             seasonItemTitle = (TextView) itemView.findViewById(R.id.showItemTitle);
             seasonItemDescription = (TextView) itemView.findViewById(R.id.showDescription);
             episodeItemLogo = (ImageView) itemView.findViewById(R.id.showItemLogo);
+            mainMenu = (Button) itemView.findViewById(R.id.main_button);
 
         }
     }
@@ -59,13 +60,14 @@ public class ShowFragmentAdapter extends RecyclerView.Adapter<ShowFragmentAdapte
     public void onBindViewHolder(@NonNull ShowFragmentAdapter.ViewHolder viewHolder, final int position) {
 
         Season episode = seasonList.get(position);
+       //viewHolder.mainMenu.setVisibility(View.GONE);
         viewHolder.seasonItemTitle.setText(episode.getTitle());
         viewHolder.seasonItemDescription.setText(episode.getSeason());
         if(seasonList.get(position).getmDirectoryPath() == null || seasonList.get(position).getmDirectoryPath().isEmpty()){
             viewHolder.episodeItemLogo.setImageResource(R.drawable.place_holder);
         }else {
             BitmapManager.loadImageFromStorage(seasonList.get(position).getmDirectoryPath(),
-                                                seasonList.get(position).getmshowImdbId(),
+                                                seasonList.get(position).getmEpisodeImdbId(),
                                                 viewHolder.episodeItemLogo);
         }
 

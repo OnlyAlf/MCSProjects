@@ -12,15 +12,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.admin.newapp.EpisodeActivity;
-import com.example.admin.newapp.MainMenuActivity;
 import com.example.admin.newapp.R;
 import com.example.admin.newapp.SeasonActivity;
-import com.example.admin.newapp.ShowActivity;
-import com.example.admin.newapp.fragments.EpisodeFragment;
-import com.example.admin.newapp.fragments.ShowFragment;
-import com.example.admin.newapp.models.Episode;
-import com.example.admin.newapp.models.Season;
-import com.example.admin.newapp.models.Show;
+import com.example.admin.newapp.Fragments.EpisodeFragment;
+import com.example.admin.newapp.Models.Episode;
+import com.example.admin.newapp.Models.Season;
 
 import java.util.List;
 
