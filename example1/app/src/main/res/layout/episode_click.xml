@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="#880037ff">
+    android:background="@color/Background">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
         android:orientation="vertical">
 
         <RelativeLayout
             android:id="@+id/header"
             android:layout_width="match_parent"
-            android:layout_height="138dp">
+            android:layout_height="138dp"
+            android:background="@color/Background">
 
             <ImageView
                 android:id="@+id/episode_image"
@@ -26,22 +29,32 @@
 
             <TextView
                 android:id="@+id/episode_number"
-                android:layout_width="147dp"
-                android:layout_height="wrap_content"
+                android:layout_width="232dp"
+                android:layout_height="59dp"
+                android:layout_alignParentEnd="true"
                 android:layout_alignParentTop="true"
-                android:layout_toEndOf="@+id/episode_image"
-                android:layout_toRightOf="@+id/episode_image"
+                android:layout_marginEnd="11dp"
+                android:textColor="@color/Font"
                 android:textSize="20sp" />
 
 
             <TextView
-                android:id="@+id/channel"
-                android:layout_width="147dp"
+                android:id="@+id/channel_episode"
+                android:layout_width="231dp"
                 android:layout_height="wrap_content"
-                android:layout_below="@+id/episode_number"
-                android:layout_toEndOf="@+id/episode_image"
-                android:layout_toRightOf="@+id/episode_image"
-                android:text="The Alf Channel"
+                android:layout_alignParentBottom="true"
+                android:layout_alignStart="@+id/episode_number"
+                android:layout_marginBottom="36dp"
+                android:textColor="@color/Font"
+                android:textSize="20dp" />
+
+            <TextView
+                android:id="@+id/runtime_episode"
+                android:layout_width="228dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_alignStart="@+id/episode_number"
+                android:textColor="@color/Font"
                 android:textSize="20dp" />
 
         </RelativeLayout>
@@ -49,13 +62,17 @@
         <RelativeLayout
             android:id="@+id/option"
             android:layout_width="match_parent"
-            android:layout_height="40dp">
+            android:layout_height="40dp"
+            android:background="@color/BackgroundAux">
 
-            <ImageView
+            <TextView
                 android:id="@+id/clock"
                 android:layout_width="113dp"
                 android:layout_height="match_parent"
-                app:srcCompat="@android:drawable/ic_menu_recent_history" />
+                android:background="@color/Items"
+                android:gravity="center"
+                android:textColor="@color/Font"
+                android:textSize="20dp" />
 
             <ImageView
                 android:id="@+id/stop"
@@ -78,44 +95,75 @@
         <RelativeLayout
             android:id="@+id/rating"
             android:layout_width="match_parent"
-            android:layout_height="80dp">
+            android:layout_height="80dp"
+            android:background="@color/Background">
 
             <TextView
-                android:layout_width="match_parent"
+                android:id="@+id/rating_episode"
+                android:layout_width="270dp"
                 android:layout_height="match_parent"
-                android:text="Rating = 9.5/10"
-                android:textSize="40sp"/>
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:textColor="@color/Font"
+                android:textSize="28sp" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="79dp"
+                android:layout_height="54dp"
+                android:layout_alignParentStart="true"
+                android:layout_centerVertical="true"
+                android:layout_marginStart="16dp"
+                android:scaleType="fitXY"
+                app:srcCompat="@drawable/imdb" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="54dp"
+                android:layout_height="32dp"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginStart="24dp"
+                app:srcCompat="@drawable/rsz_1metacritic" />
 
         </RelativeLayout>
 
         <RelativeLayout
             android:id="@+id/Description"
             android:layout_width="match_parent"
-            android:layout_height="145dp">
+            android:layout_height="185dp"
+            android:background="@color/BackgroundAux">
 
             <TextView
                 android:id="@+id/episode_description2"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textSize="30sp"
-                />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent">
-
-            <Button
-                android:id="@+id/main_button_episode"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentBottom="true"
-                android:layout_alignParentEnd="true"
-                android:text="Main Menu" />/>
-
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
+                android:textColor="@color/Font"
+                android:textSize="22sp" />
         </RelativeLayout>
 
     </LinearLayout>
 
-</ScrollView>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:background="@color/Background">
+
+        <android.support.v4.widget.NestedScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+            android:id="@+id/extra_info_episode"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textColor="@color/Font"
+            />
+        </android.support.v4.widget.NestedScrollView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

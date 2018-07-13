@@ -60,7 +60,9 @@ public class SeasonAdapter extends RecyclerView.Adapter<SeasonAdapter.ViewHolder
 
         Season season = seasonList.get(position);
         viewHolder.seasonItemTitle.setText(season.getTitle());
-        viewHolder.seasonItemDescription.setText(season.getSeason());
+        viewHolder.seasonItemDescription.setText("Season "+season.getSeason()+"\n\n"
+                                                    +"Number of Episodes  "+season.getTotalEpisodes());
+
         viewHolder.itemView.findViewById(R.id.cardViewItem);
 
         if(seasonList.get(position).getmDirectoryPath() == null || seasonList.get(position).getmDirectoryPath().isEmpty()){

@@ -6,35 +6,12 @@
     android:layout_height="match_parent"
     android:orientation="horizontal"
     tools:context=".MainMenuActivity"
-    android:background="#880037ff"
+    android:background="@color/Background"
     >
-
-    <!--<ImageButton
-        android:id="@+id/friends"
-        android:layout_width="115dp"
-        android:layout_height="111dp"
-        android:layout_alignParentStart="true"
-        android:layout_below="@+id/imageView4"
-        android:background="@drawable/friends_logo" />
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="30sp"
-        android:layout_alignTop="@+id/friends"
-        android:layout_toEndOf="@+id/friends"
-        android:text="WATCH" />-->
-
-
-   <!-- <android.support.v7.widget.RecyclerView
-        android:id="@+id/showRecyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_centerInParent="true" />-->
     <android.support.v7.widget.RecyclerView
         android:id="@+id/showRecyclerView"
         android:layout_width="match_parent"
+        android:background="@color/Background"
         android:layout_height="489dp"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
@@ -47,7 +24,8 @@
         android:windowSoftInputMode="adjustNothing"
         android:layout_width="374dp"
         android:layout_height="72dp"
-        android:background="#60ffffff"
+        android:textColor="@color/Items"
+        android:background="@color/Font"
         android:voiceSearchMode="showVoiceSearchButton|launchRecognizer"
         android:hint="@string/search_view_hint"
         app:layout_constraintBottom_toTopOf="@+id/showRecyclerView"

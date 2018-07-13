@@ -3,15 +3,15 @@
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_margin="2dp"
-    android:layout_width="320dp"
+    android:layout_margin="4dp"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content">
 
     <android.support.constraint.ConstraintLayout
         android:id="@+id/cardViewSpecial"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#880037ff"
+        android:background="@color/Background"
         android:orientation="vertical"
         tools:layout_editor_absoluteY="25dp">
 
@@ -36,15 +36,19 @@
             android:id="@+id/relativeLayoutSpecial"
             android:layout_width="180dp"
             android:layout_height="182dp"
-            android:background="#c4c5d4"
+            android:layout_marginLeft="18dp"
+            android:layout_marginStart="18dp"
+            android:background="@color/Items"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/showItemLogoSpecial"
             app:layout_constraintTop_toTopOf="parent">
 
             <TextView
                 android:id="@+id/showDescriptionSpecial"
                 android:layout_width="170dp"
                 android:layout_height="122dp"
+                android:textColor="@color/Font"
                 android:textSize="12sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -56,6 +60,7 @@
                 android:id="@+id/showItemTitleSpecial"
                 android:layout_width="170dp"
                 android:layout_height="28dp"
+                android:textColor="@color/Font"
                 android:textSize="20sp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
@@ -69,10 +74,12 @@
             android:id="@+id/download_show_button"
             android:layout_width="118dp"
             android:layout_height="51dp"
+            android:layout_marginBottom="8dp"
             android:layout_marginEnd="8dp"
             android:layout_marginRight="8dp"
-            android:background="#c4c5d4"
+            android:background="@color/Items"
             android:text="@string/downloaded_button_string"
+            android:textColor="@color/Font"
             android:textSize="13dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/relativeLayoutSpecial"

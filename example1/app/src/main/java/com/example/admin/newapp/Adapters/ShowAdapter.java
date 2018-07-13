@@ -82,6 +82,7 @@ public class ShowAdapter extends RecyclerView.Adapter<ShowAdapter.ViewHolder>{
         viewHolder.showItemTitle.setText(show.getmTitle());
         viewHolder.showItemDescription.setText(show.getmDescription());
 
+
         if(show.getmDirectoryPath() == null || show.getmDirectoryPath().isEmpty()){
             viewHolder.showItemLogo.setImageResource(R.drawable.place_holder);
         }else {

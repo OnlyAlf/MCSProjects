@@ -21,24 +21,18 @@ public class ShowActivity extends MyAppCompatActivity {
     private boolean twoPane;
     Show show;
 
-
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         super.setContentView(R.layout.show_click);
+
         if(this.getResources().getConfiguration().orientation == ORIENTATION_PORTRAIT){
             twoPane = true;
         }else{
             twoPane = false;
         }
 
-//        if(savedInstanceState != null){
-//
-//            show = savedInstanceState.getParcelable("Show");
-//
-//        }else
         show = getIntent().getBundleExtra("BUNDLE").getParcelable("Show");
-
         ImageView iv = findViewById(R.id.imageView);
         ImageView iv2 = findViewById(R.id.background_series);
         if(show.getmDirectoryPath() == null ||show.getmDirectoryPath().isEmpty()){
@@ -59,16 +53,8 @@ public class ShowActivity extends MyAppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new SeasonAdapter(show.getmSeasonList(),ShowActivity.this,twoPane);
         recyclerView.setAdapter(adapter);
-        backActivity(findViewById(R.id.main_button));
-
-
     }
 
-//    @Override
-//    public void onSaveInstanceState(Bundle outState) {
-//        outState.putParcelable("Show",show);
-//        super.onSaveInstanceState(outState);
-//    }
     }
 
 

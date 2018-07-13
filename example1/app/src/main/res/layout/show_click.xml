@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#880037ff">
+
     <RelativeLayout
 
         android:layout_width="match_parent"
@@ -24,7 +25,7 @@
             android:layout_height="358dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:background="#880037ff" />
+            android:background="@color/BackgroundFaded" />
 
         <ImageView
             android:id="@+id/imageView"
@@ -44,27 +45,27 @@
             android:layout_toEndOf="@+id/imageView"
             android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/date"
-                    android:layout_width="147dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/status"
-                    android:layout_toEndOf="@+id/imageView"
-                    android:layout_toRightOf="@+id/imageView"
-                    android:text="Sunday 9pm"
-                    android:textColor="#ffffff"
-                    android:textSize="20sp" />
+        <TextView
+            android:id="@+id/date"
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/status"
+            android:layout_toEndOf="@+id/imageView"
+            android:layout_toRightOf="@+id/imageView"
+            android:text="Sunday 9pm"
+            android:textColor="@color/Font"
+            android:textSize="20sp" />
 
-                <TextView
-                    android:id="@+id/channel"
-                    android:layout_width="147dp"
-                    android:layout_height="wrap_content"
-                    android:layout_below="@+id/date"
-                    android:layout_toEndOf="@+id/imageView"
-                    android:layout_toRightOf="@+id/imageView"
-                    android:text="The Alf Channel"
-                    android:textColor="#ffffff"
-                    android:textSize="20sp" />
+        <TextView
+            android:id="@+id/channel"
+            android:layout_width="147dp"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/date"
+            android:layout_toEndOf="@+id/imageView"
+            android:layout_toRightOf="@+id/imageView"
+            android:text="The Alf Channel"
+            android:textColor="@color/Font"
+            android:textSize="20sp" />
 
 
         <ImageView
@@ -92,24 +93,17 @@
             android:layout_alignParentStart="true"
             android:layout_below="@+id/imageView"
             android:layout_marginTop="38dp"
-            android:textColor="#ffffff"
-            android:textSize="30sp" />
-
-
-                    <Button
-                        android:id="@+id/main_button"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentBottom="true"
-                        android:layout_alignParentEnd="true"
-                        android:text="Main Menu" />
+            android:textColor="@color/Font"
+            android:textSize="22sp" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/showRecyclerView"
             android:layout_width="match_parent"
+            android:background="@color/BackgroundFaded"
             android:layout_height="208dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
+            android:gravity="center"
             android:layout_marginStart="0dp"
             android:layout_marginTop="358dp" />
 
@@ -127,6 +121,6 @@
             android:layout_marginTop="2dp"
             app:srcCompat="@android:drawable/ic_menu_recent_history" />
 
-
     </RelativeLayout>
+
 </ScrollView>

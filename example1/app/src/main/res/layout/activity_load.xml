@@ -2,7 +2,7 @@
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#880037ff">
+    android:background="@color/Background">
 
 
     <RelativeLayout
@@ -16,15 +16,14 @@
 
         <TextView
             android:layout_width="match_parent"
-            android:layout_height="73dp"
-
-
+            android:layout_height="100dp"
+            android:layout_alignParentLeft="true"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
             android:layout_marginTop="40dp"
-            android:text="Welcome to the..."
-            android:textSize="40sp"
-            android:layout_alignParentLeft="true" />
+            android:text="Welcome to the Couch Binger's Guide"
+            android:textColor="@color/Font"
+            android:textSize="40sp" />
 
     </RelativeLayout>
 
@@ -40,9 +39,7 @@
             android:layout_height="300dp"
             android:layout_alignParentStart="true"
             android:layout_alignParentTop="true"
-            android:layout_marginStart="0dp"
-            android:layout_marginTop="0dp"
-            android:background="@drawable/couch_lounge"></ImageView>
+            android:background="@drawable/couch_binge"></ImageView>
 
 
     </RelativeLayout>

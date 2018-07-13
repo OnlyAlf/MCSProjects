@@ -63,8 +63,8 @@ public class EpisodeAdapter extends RecyclerView.Adapter<EpisodeAdapter.ViewHold
     public void onBindViewHolder(@NonNull EpisodeAdapter.ViewHolder viewHolder, final int position) {
 
         Episode episode = episodeList.get(position);
-        viewHolder.episodeItemTitle.setText(episode.getTitle());
-        viewHolder.episodeItemDescription.setText(episode.getPlot());
+        viewHolder.episodeItemTitle.setText("Episode "+episode.getEpisode());
+        viewHolder.episodeItemDescription.setText(episode.getTitle()+"\n\n"+episode.getPlot());
         if(episodeList.get(position).getDirectoryPath() == null || episodeList.get(position).getDirectoryPath().isEmpty()){
             viewHolder.episodeItemLogo.setImageResource(R.drawable.place_holder);
         }else {

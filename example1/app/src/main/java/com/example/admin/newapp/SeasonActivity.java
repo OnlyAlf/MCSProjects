@@ -47,13 +47,14 @@ public class SeasonActivity extends MyAppCompatActivity {
 
         TextView tv = findViewById(R.id.season_number);
         tv.setText(season.getTitle());
-        Button mainButton = findViewById(R.id.main_button2);
+        TextView tv2 = findViewById(R.id.channel_season);
+        tv2.setText("Season "+season.getSeason());
+
         recyclerView = (RecyclerView) findViewById(R.id.showRecyclerViewSeasonClick);
         recyclerView.setHasFixedSize(false);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new EpisodeAdapter(season.getmEpisodeList(),SeasonActivity.this,twoPane);
         recyclerView.setAdapter(adapter);
-        backActivity(mainButton);
 
 
 

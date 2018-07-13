@@ -42,7 +42,6 @@ public class ShowFragmentAdapter extends RecyclerView.Adapter<ShowFragmentAdapte
             seasonItemTitle = (TextView) itemView.findViewById(R.id.showItemTitle);
             seasonItemDescription = (TextView) itemView.findViewById(R.id.showDescription);
             episodeItemLogo = (ImageView) itemView.findViewById(R.id.showItemLogo);
-            mainMenu = (Button) itemView.findViewById(R.id.main_button);
 
         }
     }
